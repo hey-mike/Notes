@@ -22,10 +22,16 @@
 
 # Performance
 1. Find the bottleneck
-2. Caculate the throughput
-3. lantencies: t(download) = t(response) + t(overhead) 
+2. lantencies: t(download) = t(response) + t(overhead) 
     - t(job) = (N(request) * (t(response) + t(overhead))) / CONCURRENT_REQUESTS + t(start/stop)
-4. Parameters control
+3. Parameters control
     - t(overhead): more powerful server
     - t(start/stop) : same as above
 
+4. Caculate the throughput 
+    - T = N/(t(job) - t(start/stop))
+    - By running a long job of N Requests, we can measure the job t aggregated time and then it's straightforward to calculate T.
+
+
+# Issue
+1. Blocking code will cause crawl failed or abnormal behaviour
