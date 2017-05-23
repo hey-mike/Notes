@@ -11,20 +11,21 @@
 
 ### A table that can help you decide what the best mechanism for a given problem is:
 
-| Problem        | Solution           |
+| **Problem**        | **Solution**           |
 | ------------- |:-------------:|
-| Something that is specific to the website that I'm crawling.   | Modify your Spider. |
-| Modifying or storing Items—domain-specific, may be reused across projects.     | Write an Item Pipeline.      |  
-| Modifying or dropping Requests/Responses—domain-specific,may be reused across projects | Write a spider middleware.|
-| Executing Requests/Responses—generic, for example,to support some custom login scheme or a special way to handle cookies. | Write a downloader middleware.|
-| All other problems. | Write an extension.|
+| *Something that is specific to the website that I'm crawling.*   | `Modify your Spider.` |
+| *Modifying or storing Items—domain-specific, may be reused across projects.*     | `Write an Item Pipeline.`      |  
+| *Modifying or dropping Requests/Responses—domain-specific,may be reused across projects* | `Write a spider middleware.`|
+| *Executing Requests/Responses—generic, for example,to support some custom login scheme or a special way to handle cookies.* | `Write a downloader middleware.`|
+| *All other problems.* | `Write an extension.`|
 
 
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the
-raw Markdown line up prettily. You can also use inline Markdown.
+# Performance
+1. Find the bottleneck
+2. Caculate the throughput
+3. lantencies: t(download) = t(response) + t(overhead) 
+    - t(job) = (N(request) * (t(response) + t(overhead))) / CONCURRENT_REQUESTS + t(start/stop)
+4. Parameters control
+    - t(overhead): more powerful server
+    - t(start/stop) : same as above
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
