@@ -106,3 +106,6 @@ to prevent the downloader's URL starvation
 - Never use any blocking code or CPU-intensive code
 
 ![Troubleshooting Scrapy's performance problems](https://github.com/MagicMike90/Notes/blob/master/Python/Troubleshooting%20Scrapy's%20performance%20problems.png?raw=true)
+
+
+# Scrapy Distibuted Crawling
