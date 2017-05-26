@@ -9,3 +9,17 @@ See 'docker run --help'.
 Solution: 
 1. sudo usermod -a -G docker $USER
 2. completely log out of your account and log back in
+
+
+# Set vagrant up default box
+By passing `primary` flag to the the machine definition to start the machine as default machine when passing `vigrant up`
+```ruby
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+VAGRANTFILE_API_VERSION = "2"
+    Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+        config.vm.define "web", primary: true do |web|
+        web.vm.box ="puppetlabs/ubuntu-14.04-32-nocm"
+    end
+end
+```
