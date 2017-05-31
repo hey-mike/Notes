@@ -1,7 +1,20 @@
 ## Clean vagrant build
 vagrant global-status --prune - Prunes invalid entries from the list. This is much more time consuming than simply listing the entries.
 
-# c;i
+#  Setup vagrant with docker
+```ruby
+config.vm.box = "ubuntu/trusty64"
+```
+## Error
+A Docker command executed by Vagrant didn't complete successfully!
+The command run along with the output from the command is shown
+below.
+
+Command: "docker" "ps" "-a" "-q" "--no-trunc"
+
+Stderr: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.29/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied
+
+**Cause**: maybe host provider doesn't have docker
 
 
 # Set vagrant up default box
