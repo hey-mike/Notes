@@ -1,14 +1,7 @@
 ## Clean vagrant build
 vagrant global-status --prune - Prunes invalid entries from the list. This is much more time consuming than simply listing the entries.
 
-
-## Common issue when integrate with docker as provider
-1. docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.26/containers/create: dial unix /var/run/docker.sock: connect: permission denied.
-See 'docker run --help'.
-
-Solution: 
-1. sudo usermod -a -G docker $USER
-2. completely log out of your account and log back in
+# c;i
 
 
 # Set vagrant up default box
@@ -58,3 +51,29 @@ synced_folder
 web.vm.synced_folder "vagrantsite/", "/opt/vagrantsite"
 ```
 This will link the `vagrantsite` directory we created in step 1 to the `/opt/vagrantsite` directory on the guest machine.
+
+
+# Ansible - is designed to execute commands using SSH
+currently it is not supporting Windows
+
+installlation: 
+```bash
+sudo pip install ansible
+```
+or for mac
+```bash
+brew install ansible
+```
+
+
+# Vagrant newtwork 
+```ruby
+config.vm.network "private_network", ip: "192.168.99.100"
+```
+Add ``web.local 192.168.99.100`` to  ``/etc/hosts``, The Vagrant machine can then be accessed using the ``web.local`` name address rather than a forwarded port address of something like ``http://localhost:8080``
+
+## Multiple machines
+The ordering and overriding of provisioners and variables is especially important in
+multimachine Vagrant environments. A multimachine Vagrantfile can specify global
+parameters (such as boxes or common provisioning tasks) that allow for individual
+machines to override the global parameters
