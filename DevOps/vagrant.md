@@ -58,3 +58,14 @@ synced_folder
 web.vm.synced_folder "vagrantsite/", "/opt/vagrantsite"
 ```
 This will link the `vagrantsite` directory we created in step 1 to the `/opt/vagrantsite` directory on the guest machine.
+
+
+# Vagrant with docker
+The Docker provider does not require a Vagrant box. The config.vm.box setting is completely optional.
+
+A box can still be used and specified, however, to provide defaults. Because the Vagrantfile within a box is loaded as part of the configuration loading sequence, it can be used to configure the foundation of a development environment.
+
+In general, however, you will not need a box with the Docker provider.
+
+## Important configuration
+*has_ssh* (boolean) - If true, then Vagrant will support SSH with the container. This allows vagrant ssh to work, provisioners, etc. This defaults to false.
