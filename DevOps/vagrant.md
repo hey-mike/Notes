@@ -92,12 +92,23 @@ parameters (such as boxes or common provisioning tasks) that allow for individua
 machines to override the global parameters
 
 
+## Important configuration
+*has_ssh* (boolean) - If true, then Vagrant will support SSH with the container. This allows vagrant ssh to work, provisioners, etc. This defaults to false.
+
+*link* (method, string argument) - Link this container to another by name. The argument should be in the format of (name:alias). Example: docker.link("db:db"). Note, if you are linking to another container in the same Vagrantfile, make sure you call vagrant up with the --no-parallel flag.
+
 # Vagrant with docker
 The Docker provider does not require a Vagrant box. The config.vm.box setting is completely optional.
 
 A box can still be used and specified, however, to provide defaults. Because the Vagrantfile within a box is loaded as part of the configuration loading sequence, it can be used to configure the foundation of a development environment.
 
-In general, however, you will not need a box with the Docker provider.
+**In general, however, you will not need a box with the Docker provider.**
 
-## Important configuration
-*has_ssh* (boolean) - If true, then Vagrant will support SSH with the container. This allows vagrant ssh to work, provisioners, etc. This defaults to false.
+# box with docker provider
+- phusion/ubuntu-14.04-amd64
+- hashicorp/boot2docker
+
+
+# Custom boot docker on vagrant
+host-vagrant: 
+1. Using ansible provision to install Docker onto Ubuntu
