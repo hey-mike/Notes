@@ -112,3 +112,14 @@ A box can still be used and specified, however, to provide defaults. Because the
 # Custom boot docker on vagrant
 host-vagrant: 
 1. Using ansible provision to install Docker onto Ubuntu
+
+
+# Install docker on vm
+```ruby
+$script = <<SCRIPT
+wget "https://download.docker.com/linux/ubuntu/dists/trusty/pool/stable/amd64/docker-ce_17.03.1~ce-0~ubuntu-trusty_amd64.deb"
+apt-get install libsystemd-journal0
+dpkg -i docker-ce_17.03.1~ce-0~ubuntu-trusty_amd64.deb
+sudo usermod -aG docker $USER
+SCRIPT
+```
