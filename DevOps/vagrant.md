@@ -112,6 +112,7 @@ A box can still be used and specified, however, to provide defaults. Because the
 # Custom boot docker on vagrant
 host-vagrant: 
 1. Using ansible provision to install Docker onto Ubuntu
+2. Ensure Boot2Docker vm is also forward the same ports
 
 
 # Install docker on vm
@@ -123,3 +124,7 @@ dpkg -i docker-ce_17.03.1~ce-0~ubuntu-trusty_amd64.deb
 sudo usermod -aG docker $USER
 SCRIPT
 ```
+
+# Vagrant Plugins
+## vagrant-notify-forwarder
+By default, this sets up ``UDP port 29324`` for port forwarding
