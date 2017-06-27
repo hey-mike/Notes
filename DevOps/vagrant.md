@@ -5,16 +5,6 @@ vagrant global-status --prune - Prunes invalid entries from the list. This is mu
 ```ruby
 config.vm.box = "ubuntu/trusty64"
 ```
-## Error
-A Docker command executed by Vagrant didn't complete successfully!
-The command run along with the output from the command is shown
-below.
-
-Command: "docker" "ps" "-a" "-q" "--no-trunc"
-
-Stderr: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.29/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied
-
-**Cause**: maybe host provider doesn't have docker
 
 
 # Set vagrant up default box
@@ -114,16 +104,6 @@ host-vagrant:
 1. Using ansible provision to install Docker onto Ubuntu
 2. Ensure Boot2Docker vm is also forward the same ports
 
-
-# Install docker on vm
-```ruby
-$script = <<SCRIPT
-wget "https://download.docker.com/linux/ubuntu/dists/trusty/pool/stable/amd64/docker-ce_17.03.1~ce-0~ubuntu-trusty_amd64.deb"
-apt-get install libsystemd-journal0
-dpkg -i docker-ce_17.03.1~ce-0~ubuntu-trusty_amd64.deb
-sudo usermod -aG docker $USER
-SCRIPT
-```
 
 # Vagrant Plugins
 ## vagrant-notify-forwarder
