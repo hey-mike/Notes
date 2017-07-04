@@ -117,11 +117,7 @@ to prevent the downloader's URL starvation
 # Crawl steps
 - Inspect website structres
 - Use different spiders in order to satify website current structures
-
-
-# Frist project 
-Australian Bureau of Statistics: http://www.abs.gov.au/
-
+- Using another application to schedule scrapy crawl 
 
 # Error
 Offsite: Check ```allowed_domains``` if it matches the domain will be scraped
