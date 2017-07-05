@@ -94,17 +94,31 @@ A box can still be used and specified, however, to provide defaults. Because the
 
 **In general, however, you will not need a box with the Docker provider.**
 
-# box with docker provider
+# Boot2docker
+Boot2docker is an excellent project that spin up docker containers in a virtual machine when the hosts (i.e. OSX) don't support LXC, but it may be not suitable for large applications. 
+
+### box with docker provider
 - phusion/ubuntu-14.04-amd64
 - hashicorp/boot2docker
 
-
-# Custom boot docker on vagrant
-host-vagrant: 
+### host-vagrant: 
 1. Using ansible provision to install Docker onto Ubuntu
 2. Ensure Boot2Docker vm is also forward the same ports
 
 
-# Vagrant Plugins
-## vagrant-notify-forwarder
+## Plugins
+- vagrant-notify-forwarder:
 By default, this sets up ``UDP port 29324`` for port forwarding
+
+## Sync folder for docker containers in boot2docker
+using `vm.synced_folder` to overide docker container volums
+
+## Webpack
+`watchOptions.poll` 
+```
+poll: 1000 // Check for changes every second
+```
+Watching does not work with NFS and machines in VirtualBox.
+
+## nodemon
+`--legacy-watch` is needed to apply when using boot2docker to watch file changes
