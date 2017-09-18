@@ -23,3 +23,6 @@ http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html
 ## Required module as default
 - Create a index.js module
 - improt A from './folder_name'
+
+## React Router
+`withRouter` will cause rerender if enable it in `Route`, it has bo be used when export component.
