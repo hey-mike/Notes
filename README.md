@@ -16,8 +16,8 @@ http://patternlab.io/
 - Pro MERN stack
 
 
-# OAUTH2
-## Abstract Protocol Flow
+# OAuth2
+## Roles
 Resource Owner: User
 
 The resource owner is the user who authorizes an application to access their account. The application's access to the user's account is limited to the "scope" of the authorization granted (e.g. read or write access).
@@ -32,6 +32,7 @@ Client: Application
 
 The client is the application that wants to access the user's account. Before it may do so, it must be authorized by the user, and the authorization must be validated by the API.
 
+## Abstract Protocol Flow
 1. The application requests authorization to access service resources from the user
 2. If the user authorized the request, the application receives an authorization grant
 3. The application requests an access token from the authorization server (API) by presenting authentication of its own identity, and the authorization grant
