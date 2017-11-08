@@ -48,3 +48,9 @@ class and ensure that only its behavior is being tested
 - Define test component in testname.spec.ts
 - Create test component
 - describe test behaviour
+
+
+## Router bug 
+https://stackoverflow.com/questions/38120756/angular2-router-navigate-refresh-page
+
+Input type (type = "button) is important to make naviation animation works in angular 4, without specifying type, it works on IE11 and Edge browsers, but would reload the application in Chrome.
