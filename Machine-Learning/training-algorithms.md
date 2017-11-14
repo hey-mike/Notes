@@ -19,3 +19,15 @@ methods
 - **read_csv()**: read csv file , return *DataFrame*
 - **tail()**: get last n line of DataFrame
 - **iloc(array, index)**: get numer of rows of column index
+
+## Disadvantage of perceptron
+
+its biggest disadvantage is that it never converges if the classes are not perfectly linearly separable.
+
+## The curse of dimensionality
+
+The curse of dimensionality describes the phenomenon where the feature
+space becomes increasingly sparse for an increasing number
+of dimensions of a fixed-size training dataset
+
+_Regularization_ is not applicable such as decision trees and KNN, we can use feature selection and dimensionality reduction techniques to help us avoid the curse of dimensionality
