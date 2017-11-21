@@ -29,3 +29,5 @@ Random sampling with replacement: 1, 3, 3, 4, 1
   - precision
   - recall
   - F1-score
+  - Receiver operator charateristic (ROC): this graphs are useful tools for selecting models for classification based on their performance with respect to the false positive and ture positive rates, which are computed by shifting the decision threshold of the classifer.
+  - Area under the cureve (AUC) can be computed based on ROC curve to charaterize the performance of a classification model
