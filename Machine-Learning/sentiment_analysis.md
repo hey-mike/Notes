@@ -7,4 +7,3 @@
 - Processing documents into tokens
 - Training a logistic regression model for document classification
 - Online algorithms and out-of-core learning for large datasets
-- 

@@ -18,3 +18,6 @@ $ docker-compose build web
 $ docker-compose up --no-deps -d web
 ```
 This will first rebuild the image for `web` and then stop, destroy, and recreate just the web service. The `--no-deps` flag prevents Compose from also recreating any services which `web` depends on.
+
+
+truncate -s 0 /var/lib/docker/containers/*/*-json.log
