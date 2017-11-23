@@ -1,5 +1,10 @@
 # Introduction
 
+## Rule-based system VS Machine learning
+
+1. The logic required to make a decision is specific to a single domain and task. Changing the task even slightly might require a rewrite of the whole system.
+1. Designing rules requires a deep understanding of how a decision should be made by a human expert.
+
 Machine learning summarized in four categories.
 
 - Predictive learning: comprises two kinds of tasks where we aim to either predict a continuous valued phenomenon (like the future location of a celestial body), or distinguish between distinct kings of things (like different faces in an image)
@@ -29,13 +34,21 @@ Machine learning summarized in four categories.
       - _i.e. distinguish spam and non-spam email_
     - **regression**: for predicting continuous outcomes, given a number of _predictor_ ( explanatory) variables and a continuous response variable (outcome), and we try to find a relationship between those variables that allows us to predict an outcome.
       - _i.e. predict a relationship between the time spent studying for the test and the final scores_
+  - examples:
+    - Identifying the ZIP code from handwritten digits on an envelope.
+    - Determining whether or not a tumor is benign based on a medical image.
+    - Detecting fraudulent activity in credit card transactions
 
 - Unsupervised learning (Discovering hidden structures):
   - In uservised learning, we know the right answer beforehand when we train our model, and in reinforcement learning, we define a measure of reward for particular actions by the agent. In unsupervised learning, however, we are dealling with unlabeled data or data of unkow structure.
   - **cluster**: is an exploratory data analysis technique that allows us to organize a pile of information into meaningful subgroups (_clusters_) without having any prior knowledge of their group menmeberships.
     - _i.e._ it allows marketers to discover customer groups based on their interests in order to develop distinct mareting programs
   - **dimensionality reduction**
-    - It is a commonly used approach in feature preprocessing to remove noise from data, which can also degrade the predictive performance of certain algorithms, and compress the data onto a smaller dimensional subspace while retaining most of the relevant information.
+    - It is a commonly used approach in feature preprocessing to remove noise from data, which can also degrade the predictive performance of certain algorithms, and compress the data onto a smaller dimensional subspace while retaining most of the relevant information. 
+  - Examples:
+    - Identifying topics in a set of blog posts.
+    - Segmenting customers into groups with similar preferences.
+    - Detecting abnormal access patterns to a website.
 
 - reinforcement learning (Solving interactive problems):
   - The goal is to develop a system (_agent_) that improves its performance based on interactions with the _enviroment_.
