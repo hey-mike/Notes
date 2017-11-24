@@ -30,7 +30,7 @@ Machine learning summarized in four categories.
 - Supervised learning (making predictions about the future):
   - **supervised** refers to a set of samples where the desired output signals (lables ) are already known.
   - There are two sub categories:
-    - **classification**: the goal is to predict the categorical class labels of new instances based on the pas observations.
+    - **classification**: the goal is to predict the categorical class labels of new instances based on the pas observations, which is a choice from a predfined list of possibilities.
       - _i.e. distinguish spam and non-spam email_
     - **regression**: for predicting continuous outcomes, given a number of _predictor_ ( explanatory) variables and a continuous response variable (outcome), and we try to find a relationship between those variables that allows us to predict an outcome.
       - _i.e. predict a relationship between the time spent studying for the test and the final scores_
@@ -38,6 +38,8 @@ Machine learning summarized in four categories.
     - Identifying the ZIP code from handwritten digits on an envelope.
     - Determining whether or not a tumor is benign based on a medical image.
     - Detecting fraudulent activity in credit card transactions
+
+A easy way to distinguish between classifcation and regression tasks is to ask whether there is some kind of continuity in the output.
 
 - Unsupervised learning (Discovering hidden structures):
   - In uservised learning, we know the right answer beforehand when we train our model, and in reinforcement learning, we define a measure of reward for particular actions by the agent. In unsupervised learning, however, we are dealling with unlabeled data or data of unkow structure.
@@ -53,6 +55,7 @@ Machine learning summarized in four categories.
 - reinforcement learning (Solving interactive problems):
   - The goal is to develop a system (_agent_) that improves its performance based on interactions with the _enviroment_.
     - _i.e. chess engine_, the agent decides upon a series of moves depending on the state of the board (the enviroment) and reward can be difned as _win_ or _lose_ at the end of the game
+
 
 ## Predictive modeling
 
