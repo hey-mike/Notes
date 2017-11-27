@@ -52,6 +52,8 @@ A easy way to distinguish between classifcation and regression tasks is to ask w
     - Segmenting customers into groups with similar preferences.
     - Detecting abnormal access patterns to a website.
 
+unsupervised algorithms are used offten in an explortory setting, when a data scientist wants to understand the data better, rather than as part of a larger automatic system. Another common application for unsupervised algorithms is as a preprocessing step for supervised algorithms.
+
 - reinforcement learning (Solving interactive problems):
   - The goal is to develop a system (_agent_) that improves its performance based on interactions with the _enviroment_.
     - _i.e. chess engine_, the agent decides upon a series of moves depending on the state of the board (the enviroment) and reward can be difned as _win_ or _lose_ at the end of the game
