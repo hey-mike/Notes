@@ -19,6 +19,16 @@ Randomly split the training dataset into k folds without replacement, wheere k -
 Random sampling without replacement: 2, 1, 3, 4, 0
 Random sampling with replacement: 1, 3, 3, 4, 1
 
+Benefits of cross validation:
+- each example will be in the test set exactly once
+- each example is in one of the folds, and each fold is the test set once
+- having multiple splits of data provides some information about how sensitive our model is to the selection of the traning dataset.
+- it is more effectively than train_test_split
+
+Disadvantage:
+it increase computational cost, since it trains k models instead of a single model, cross validation will be roughly k tims slower than doing a single split of data.
+
+
 ## Debugging algorithms with learning and validation curves
 
 - Diagnosing bias and variance problems with learning curves
