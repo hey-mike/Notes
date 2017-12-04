@@ -12,6 +12,11 @@ Machine learning summarized in four categories.
 - Function approximation: It is employed when we know too little abut a dataset to produce proper features ourselves (and therefore must learn them strictly from the data itself).
 - Numerical optimization  powers the first three and is the engine that makes machine learning run in practice.
 
+## Cost function
+One of the key ingredients of supervised machine learning algorithms is to define
+an objective function that is to be optimized during the learning process. This
+objective function is often a cost function that we want to minimize.
+
 ## Basic process
 
 - Define task
