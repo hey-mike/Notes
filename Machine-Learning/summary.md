@@ -13,12 +13,14 @@ Listed in order of increasing complexity:
 
 ## General procesdure
 
+- Acquire
+- Inspect & Explore
 - Data processing
 - Dimensionality reduction
 - Split train and test data set
 - Train data
 - Model evaluation and hyperparameter tuning
-- Save model
+- Save and deploy model
 
 ## Reference
 
@@ -30,6 +32,8 @@ Books:
   - review: books follows general procedure to implement a machine learning model
 - Python Machine Learning
   - review: it is a good book to advance machine learning knowledge with scikit-learn
+- Pythoe Machine Learning Blueprints
+  - review: a good book to build a full stack machine learning system with serveral examples
 
 Online courses:
 
