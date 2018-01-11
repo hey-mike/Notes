@@ -20,3 +20,7 @@
     - feature extraction : derive information from the feature set to construct a new feature subspace.
 - Assessing feature importance with random forests
   - If two or more features are highly correlated, one feature may be ranked very highly while the information fo the other feature(s) may not be fully captured. On the other hand, we don't need to be concerned about this problem if we are merely interested in the predictive performance of a model rather than the interpretation of feature importtances.
+
+
+- Dealing with Skewed Classes
+- 
