@@ -22,6 +22,9 @@ Listed in order of increasing complexity:
 - Model evaluation and hyperparameter tuning
 - Save and deploy model
 
+
+## Dealling with umblanced dataset
+
 ## Reference
 
 Books:
