@@ -2,6 +2,8 @@
 
 The conventional model evaluation methods do not accurately measure model performance when faced with imbalanced datasets.
 
+## Collect more data
+
 ## Resampling
 
 Standard classifier algorithms like Decision Tree and Logistic Regression have a bias towards classes which have number of instances. They tend to only predict the majority class data. The featueres of minority class are treated as noise and are often ignored. Thus, there is a high probability of misclassification of the nimority class as compared to the majority class.

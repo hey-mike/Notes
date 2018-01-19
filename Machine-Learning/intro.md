@@ -17,14 +17,6 @@ One of the key ingredients of supervised machine learning algorithms is to defin
 an objective function that is to be optimized during the learning process. This
 objective function is often a cost function that we want to minimize.
 
-## Basic process
-
-- Define task
-- Collect data
-- Design features
-- Train model
-- Test model
-
 ## Predictive learning problems
 
 1. Regression:
