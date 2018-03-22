@@ -2,11 +2,17 @@
 
 Angular is consisted of six parts:
 - Data Binding
-- Directive
-  - Built-in Directive
+- Directive (There are three kinds of directives in Angular)
+  - Components — directives with a template.
+    - are the most common of the three directives
   - Artribuite Directive
-  - Structural Directive - i.e. iterator for components
-- Component
+    - change the appearance or behaviour of an element, component, or another directive.
+  - Structural Directive
+    - change the DOM layout by adding and removing DOM elements.
+    - i.e. iterator for components 
+- Forms
+  - Template-driven forms
+  - Reactive form
 - Pipe
   - Applying data tranformation
 - Service
