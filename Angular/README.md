@@ -22,7 +22,10 @@ Angular is consisted of six parts:
   - Feature modules
 
 
-
+## Design pattern
+- NgRx is using Observable pattern
+- Unidirectional Data Flow ( this is no really two way data-binding in angular 2)
+- Dependency intejection 
 
 ## Module
 *imports* This property is used to import the modules that are required by the classes in the modules.
