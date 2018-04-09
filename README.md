@@ -49,6 +49,7 @@ The client is the application that wants to access the user's account. Before it
 
 - Node.js 8 the Right Way
 - Building Microservices
+- Node.js Design Patterns
 
 ## Reading queue
 
