@@ -121,3 +121,18 @@ to prevent the downloader's URL starvation
 
 # Error
 Offsite: Check ```allowed_domains``` if it matches the domain will be scraped
+
+
+## Setting:
+Using large pool of IP (proxy) to route requests
+Increasing request delay
+Reduce number of requests per second
+
+## Environment:
+AWS / ScrapyHub
+Radis, MySQL / MogoDB 
+Elastic search 
+Spark
+
+## Advance:
+Distributed Crawling with multiple servers
