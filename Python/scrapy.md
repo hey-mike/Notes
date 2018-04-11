@@ -111,10 +111,10 @@ to prevent the downloader's URL starvation
 ![Troubleshooting Scrapy's performance problems](https://github.com/MagicMike90/Notes/blob/master/Python/Troubleshooting%20Scrapy's%20performance%20problems.png?raw=true)
 
 
-# Scrapy Distibuted Crawling
+## Scrapy Distibuted Crawling
 
 
-# Crawl steps
+## Crawl steps
 - Inspect website structres
 - Use different spiders in order to satify website current structures
 - Using another application to schedule scrapy crawl 
