@@ -17,3 +17,11 @@ NodeJS
 ## System architecture
 
 Microservices: modularize system services ,it seems to be the trend for system design, since it fits into DevOps team with continouse delivery.
+
+## Website
+
+It is better to use traditional way to create a static sites, simply use JQuery, HTML, CSS and vanalia JavaScript.
+
+If there are more user interactions, or more UI components have to be managed, more like an application, then I will go with Angular/ React, but in general case, I will choose React, I can see React is exceptional to build widgets.
+
+Moreover, if I want to build a large platform, for example, a PAAS business, I will choose Angular, due to sctrict type checking, it is imperative to maintain large code base.
