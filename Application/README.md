@@ -27,3 +27,12 @@ Microservices: modularize system services ,it seems to be the trend for system d
   - Tier 3: Delivery tier
     - Aware of client profile (mobile, desktop, IOT, and so on), transforms data delivered by the Aggregation tier into client-specific formats. Cashed data would be fetched here, via CDN or otherwise.Selection of ads to insert into a webpage might be done here. This Tier is reponsible for optimizing data received from the Aggregation tier for an individual user. This layer can often be fully automated.
   - Tier 4: Client tier
+
+
+## Website
+
+It is better to use traditional way to create a static sites, simply use JQuery, HTML, CSS and vanalia JavaScript.
+
+If there are more user interactions, or more UI components have to be managed, more like an application, then I will go with Angular/ React, but in general case, I will choose React, I can see React is exceptional to build widgets.
+
+Moreover, if I want to build a large platform, for example, a PAAS business, I will choose Angular, due to sctrict type checking, it is imperative to maintain large code base.
