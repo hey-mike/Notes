@@ -37,6 +37,12 @@ The client is the application that wants to access the user's account. Before it
 6. If the access token is valid, the resource server (API) serves the resource to the application
 
 
+## Multipart upload
+
+Multipart upload allows you to upload a single object as a set of parts. Each part is a contiguous portion of the object's data. You can upload these object parts independently and in any order. If transmission of any part fails, you can retransmit that part without affecting other parts. After all parts of your object are uploaded, Amazon S3 assembles these parts and creates the object. In general, when your **object size reaches 100 MB**, you should consider using multipart uploads instead of uploading the object in a single operation.
+
+
+
 ## Reading list (2017)
 
 - Learning Scrapy
