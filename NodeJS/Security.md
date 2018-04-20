@@ -60,3 +60,20 @@
   - Do not apply css encoding in style context
   - JavaScript and url encode when creating links
  
+
+## Avoid cross-site request forgery (CSRF)
+
+- Synchronize tokens as part of CSRF protection
+- Avoid setting up common CSRF pitfalls
+
+## Protect the data
+
+- Understand data flow
+- Protect client application and data
+- Securely transfer data
+    - TSL and SLL
+    - proper logs
+- Secure data stored within the application
+    - Oversharing was a common configuration problem in LAMP stacks because Apache had a default directory-sharing configuration that tried to disallow files of a certain type.
+
+## Secure codebase
