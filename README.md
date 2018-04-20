@@ -55,10 +55,11 @@ Multipart upload allows you to upload a single object as a set of parts. Each pa
 
 - Node.js 8 the Right Way
 - Building Microservices
-- Node.js Design Patterns
+- Node.js Design Patterns - second edition
+- Mastering Node.js - second edition
+- Secure Your Node.js Web Application
 
 ## Reading queue
 
-- Secure Your Node.js Web Application
 - The Nature of Software Development
 - Your Code as a Crime Scene
