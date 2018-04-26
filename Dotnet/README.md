@@ -36,3 +36,7 @@ or
 ```
 ASPNETCORE_ENVIRONMENT=Development dotnet run
 ```
+
+## Migration
+
+**Code-First** Migrations: giving the developer a chance to alter the Database schema without having to drop/recreate the whole thing in Production.
