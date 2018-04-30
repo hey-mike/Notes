@@ -20,6 +20,9 @@ Server - auth check
 advantages:
 It won't store any user-specific information of the server memeory, database, session provider,or other data containers of any sort.
 
+**refresh token**
+It is a special kind of token that can be used to obtain a renewed access token - that allows accessing a protected resource - at any time. You can request new access tokens until the refresh token is blacklisted. Refresh tokens must be stored securely by an application becuase they essentially allow a user to remain authenticated forever.
+
 ## Signatures
 
 ## Two-factore
