@@ -33,8 +33,11 @@ Or
 ASPNETCORE_ENVIRONMENT=Development dotnet watch run
 
 ## migrate a database
+**Code-First** Migrations: giving the developer a chance to alter the Database schema without having to drop/recreate the whole thing in Production.
 
+``` bash
 dotnet ef migrations add "Identity" -o "Data/Migrations"
+```
 
 ## update a database
 
@@ -50,3 +53,7 @@ dotnet ef database update
 dotnet ef database drop
 dotnet ef database update
 ```
+ASPNETCORE_ENVIRONMENT=Development dotnet run
+```
+
+
