@@ -50,6 +50,17 @@ Multipart upload allows you to upload a single object as a set of parts. Each pa
 - Pro MERN stack
 - Python Machine Learning
 - Hands-on Machine Learning with scikit-learn and Tensorflow
+- Creating Development Environments with Vagrant, Second Edition
+- Developing Microservices with Node.js
+- Express in Action
+- Pro Angular, 2nd Edition
+- Pro REST API Development with Node.js
+- Pro RESTful APIs
+- Reactive Programming with Node.js
+- Vagrant Virtual Development Environment Cookbook
+- Introduction to Machine Learning with Python
+- Real-World Machine Learning
+- Web 2.0 Architectures
 
 ## Reading list (2018)
 
