@@ -1,5 +1,11 @@
 # Dotnet notes
 
+## Dotnet MVC
+
+## Dotnet API
+
+## Duck Typing
+
 ## Install Angular 5 app with dotnet cli
 
 1. Installl the templates
