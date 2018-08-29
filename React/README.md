@@ -26,3 +26,15 @@ http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html
 
 ## React Router
 `withRouter` will cause rerender if enable it in `Route`, it has bo be used when export component.
+
+
+## PurComponent
+A PureComponent will always re-render if the state or props reference a new object. This implies that if we do not want to lose the benefits of PureComponent, we should avoid such structures:
+```
+<Entity values={this.props.values || []}/>
+```
+
+It is important to remember, that PureComponent skips the re-render operation not only for component itself, but also for all its children, so the best use case for PureComponent are presentational components which have no child components and no dependencies on the global state in the application.
+
+## Fragment
+A common pattern in React is for a component to return multiple elements. Fragments let you group a list of children without adding extra nodes to the DOM.
