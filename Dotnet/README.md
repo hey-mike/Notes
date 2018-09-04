@@ -59,7 +59,11 @@ dotnet ef database update
 dotnet ef database drop
 dotnet ef database update
 ```
+```
 ASPNETCORE_ENVIRONMENT=Development dotnet run
 ```
+## Razor
+### View location Expender
+Razor uses view location expanders to build up a list of locations that should be searched for a view. View location expanders implement the IViewLocationExpander interface
 
 
