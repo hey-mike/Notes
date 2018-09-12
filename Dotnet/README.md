@@ -82,3 +82,5 @@ Razor uses view location expanders to build up a list of locations that should b
 A claim is a piece of information about the user, along with some information about where the information came from.
 
 Policy works with claims to manage user access to the application more flexibly than with standard roles.
+
+## Model convention

@@ -69,6 +69,8 @@ Multipart upload allows you to upload a single object as a set of parts. Each pa
 - Node.js Design Patterns - second edition
 - Mastering Node.js - second edition
 - Secure Your Node.js Web Application
+- Pro .NET core MVC 2
+- 
 
 ## Reading queue
 
