@@ -78,3 +78,7 @@ ASPNETCORE_ENVIRONMENT=Development dotnet run
 Razor uses view location expanders to build up a list of locations that should be searched for a view. View location expanders implement the IViewLocationExpander interface
 
 
+## Claim and Policy
+A claim is a piece of information about the user, along with some information about where the information came from.
+
+Policy works with claims to manage user access to the application more flexibly than with standard roles.
