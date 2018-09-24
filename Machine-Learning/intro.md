@@ -1,7 +1,7 @@
 # Introduction
 
 ## A diagram of AI in computer science
-![alt text](https://github.com/MagicMike90/Notes/tree/master/Machine-Learning/ai_explaination.jpg " A diagram of AI category1")
+![alt text](https://github.com/MagicMike90/Notes/blob/master/Machine-Learning/ai_explaination.jpg "A diagram of AI category1")
 
 ## Rule-based system VS Machine learning
 
