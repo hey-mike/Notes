@@ -1,5 +1,8 @@
 # Introduction
 
+## A diagram of AI in computer science
+![alt text](https://github.com/MagicMike90/Notes/tree/master/Machine-Learning/ai_explaination.jpg " A diagram of AI category1")
+
 ## Rule-based system VS Machine learning
 
 1. The logic required to make a decision is specific to a single domain and task. Changing the task even slightly might require a rewrite of the whole system.
