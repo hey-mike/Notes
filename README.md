@@ -70,7 +70,10 @@ Multipart upload allows you to upload a single object as a set of parts. Each pa
 - Mastering Node.js - second edition
 - Secure Your Node.js Web Application
 - Pro .NET core MVC 2
-- 
+- Pro Angular 2nd edition
+- Clean Architecture 
+- Essential C# 7.0, six edition
+- ASP.NET Core with Angular
 
 ## Reading queue
 
