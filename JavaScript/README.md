@@ -56,3 +56,13 @@ With `let` and `const` in ES6, it’s no longer safe to check for an identifier�
 - Not iterate over any array using for, while, do-while...
 - Not sharing any state with other functions
 - Implementing it should not have any side-effects in any other part of our program
+
+## JavaScript optimizing
+- tail call optimization:The tail call optimization improvement is that if the return line is a function, it will not deal with call stack issues.
+
+- Memoization: Memoization is the process of storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+
+- lazy loading: Consider an object that is expensive to create that is to say it takes a great deal of time to create the object. If we are unsure if the object's value will be needed, we can defer its full creation until later.
+
+- Currying – Partial application: Currying is the technique of translating the evaluation of a function that takes multiple arguments into evaluating a sequence of functions, each with a single argument.
+- Composing: Composing is another benefit of functional programming allowing to generate super functions using existing functions.
