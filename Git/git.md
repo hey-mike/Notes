@@ -30,9 +30,9 @@ git commit -m "Reverting to the state of the project at f414f31"
    The command `git branch -a` shows the test branch feature-collaboration is present on local and also present on remote
 1. Prune/Cleanup the local references to remote branch
 
-- The command `git remote prune origin --dry-run` lists branches that can be deleted/pruned on your local. An option `--dry-run` is needed.
+   - The command `git remote prune origin --dry-run` lists branches that can be deleted/pruned on your local. An option `--dry-run` is needed.
 
-- Now go ahead and actually prune/cleanup the local references by running the command `git remote prune origin`. Note that you don't need an option `--dry-run`.
-- Again, run the command `git branch -a` will show the local status of branches.
+   - Now go ahead and actually prune/cleanup the local references by running the command `git remote prune origin`. Note that you don't need an option `--dry-run`.
+   - Again, run the command `git branch -a` will show the local status of branches.
 
 1. Delete local branch
