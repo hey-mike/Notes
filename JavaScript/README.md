@@ -1,9 +1,9 @@
-# JavaScript notes 
+# JavaScript notes
 
 ## comparasion
 
-- Plain JavaScript 
-  - pros: 
+- Plain JavaScript
+  - pros:
     - Does not require any additional libraries or technology
     - Offers the best performance
     - Provides the best level of compatibility with third-party libraries
@@ -16,7 +16,7 @@
     - Is still a callback-based solution
     - Good performance
   - cons:
-    - Introduce an extreanl dependency 
+    - Introduce an extreanl dependency
     - Might still not be enough for advanced flows
 - Promises
   - pros:
@@ -41,15 +41,19 @@
     - Makes non-blocking API look like blocking
     - Clean and intuitive syntax
 
-## Warning:
+## Warning
+
 With `let` and `const` in ES6, it’s no longer safe to check for an identifier’s existence using `typeof`:
 
 ## Module
+
 - AMD: AMD stands for Asynchronous Module Definition. This system works in such a way that when the module is defined, usually at the moment of loading the file with the source code, it is not necessary when it is going to be used, but rather when it is available for later use in the system.
 - CommonJS: Unlike AMD modules that are loaded asynchronously on demand, CommonJS modules are loaded synchronously
 
 ## Pure function vs impure function
+
 **Pure function**
+
 - Must return something
 - No matter how many times the function is executed the result should be the same if the input is also the same
 - Input data must not be mutated during the execution of the function
@@ -58,6 +62,7 @@ With `let` and `const` in ES6, it’s no longer safe to check for an identifier�
 - Implementing it should not have any side-effects in any other part of our program
 
 ## JavaScript optimizing
+
 - tail call optimization:The tail call optimization improvement is that if the return line is a function, it will not deal with call stack issues.
 
 - Memoization: Memoization is the process of storing the results of expensive function calls and returning the cached result when the same inputs occur again.
