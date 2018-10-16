@@ -1,3 +1,5 @@
+# Git Notes
+
 ## Revert file to specific commit
 
 git checkout commit_id -- file1/to/restore file2/to/restore
@@ -36,3 +38,31 @@ git commit -m "Reverting to the state of the project at f414f31"
    - Again, run the command `git branch -a` will show the local status of branches.
 
 1. Delete local branch
+
+## Rename a local and remote branch
+
+1. Rename your local branch.
+   If you are on the branch you want to rename:
+
+```git
+git branch -m new-name
+```
+
+If you are on a different branch:
+
+```git
+git branch -m old-name new-name
+```
+
+1. Delete the old-name remote branch and push the new-name local branch.
+
+```git
+git push origin :old-name new-name
+```
+
+1. Reset the upstream branch for the new-name local branch.
+   Switch to the branch and then:
+
+```git
+git push origin -u new-name
+```
