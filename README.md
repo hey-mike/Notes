@@ -1,18 +1,21 @@
 # General Notes
+
 Search Method
-- *Soundex* is a phonetic algorithm for indexing names by sound as pronounced in English. It is appropriate when you want to do name lookups and allow users to find correct results despite minor differences in spelling.
 
-- *Fuzzy matching* is the technique of finding strings that match a string, approximately, not exactly. The closeness of a match is measured in terms of operations necessary to convert the string into an exact match.
+- _Soundex_ is a phonetic algorithm for indexing names by sound as pronounced in English. It is appropriate when you want to do name lookups and allow users to find correct results despite minor differences in spelling.
 
-- *Levenshtein*. It's a simple algorithm that provides good results, but it's not supported by MongoDB. Measuring the Levenshtein distance must thus be done by fetching the entire result set and then applying the algorithm for the search query on all the strings. The speed of the operation grows linearly with the number of documents in your database, so unless you have a very small document set, this is most likely not
-worth doing
+- _Fuzzy matching_ is the technique of finding strings that match a string, approximately, not exactly. The closeness of a match is measured in terms of operations necessary to convert the string into an exact match.
+
+- _Levenshtein_. It's a simple algorithm that provides good results, but it's not supported by MongoDB. Measuring the Levenshtein distance must thus be done by fetching the entire result set and then applying the algorithm for the search query on all the strings. The speed of the operation grows linearly with the number of documents in your database, so unless you have a very small document set, this is most likely not
+  worth doing
 
 Website Documentation
 http://patternlab.io/
 
-
 # OAuth2
+
 ## Roles
+
 Resource Owner: User
 
 The resource owner is the user who authorizes an application to access their account. The application's access to the user's account is limited to the "scope" of the authorization granted (e.g. read or write access).
@@ -36,12 +39,9 @@ The client is the application that wants to access the user's account. Before it
 5. The application requests the resource from the resource server (API) and presents the access token for authentication
 6. If the access token is valid, the resource server (API) serves the resource to the application
 
-
 ## Multipart upload
 
 Multipart upload allows you to upload a single object as a set of parts. Each part is a contiguous portion of the object's data. You can upload these object parts independently and in any order. If transmission of any part fails, you can retransmit that part without affecting other parts. After all parts of your object are uploaded, Amazon S3 assembles these parts and creates the object. In general, when your **object size reaches 100 MB**, you should consider using multipart uploads instead of uploading the object in a single operation.
-
-
 
 ## Reading list (2017)
 
@@ -71,9 +71,10 @@ Multipart upload allows you to upload a single object as a set of parts. Each pa
 - Secure Your Node.js Web Application
 - Pro .NET core MVC 2
 - Pro Angular 2nd edition
-- Clean Architecture 
+- Clean Architecture
 - Essential C# 7.0, six edition
 - ASP.NET Core with Angular
+- React Design patterns and Best Practices
 
 ## Reading queue
 
