@@ -18,7 +18,8 @@ NodeJS
 
 Microservices: modularize system services ,it seems to be the trend for system design, since it fits into DevOps team with continouse delivery.
 
-- 3-Tier architectures 
+- 3-Tier architectures
+
   - i.e. MVC architecture
 
 - 4-Tier architectures
@@ -27,7 +28,6 @@ Microservices: modularize system services ,it seems to be the trend for system d
   - Tier 3: Delivery tier
     - Aware of client profile (mobile, desktop, IOT, and so on), transforms data delivered by the Aggregation tier into client-specific formats. Cashed data would be fetched here, via CDN or otherwise.Selection of ads to insert into a webpage might be done here. This Tier is reponsible for optimizing data received from the Aggregation tier for an individual user. This layer can often be fully automated.
   - Tier 4: Client tier
-
 
 ## Website
 
