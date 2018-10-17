@@ -57,3 +57,30 @@ A common pattern in React is for a component to return multiple elements. Fragme
 
 1. Dont' duplicate data from props in state, calculate what you can in render() method
 1. Don't keep something in the state if you don't use it for rendering, For example, API subscriptions are better off as custom private fields or variables in external modules.
+
+## Container and Presentational pattern
+
+`Container components`
+
+- They are more concerned about the behavior
+- They render their presentational components
+- They make API calls and manipulate data
+- They define event handlers
+- They are written as classes
+
+`Presentational components`
+
+- They are more concerned with the visual representation
+- They render the HTML markup (or other components)
+- They receive data from the parents in the form of props
+- They are often written as stateless functional components
+
+## Function as Child
+
+```React
+const FunctionAsChild = ({ children }) => children()
+
+FunctionAsChild.propTypes = {
+  children: React.PropTypes.func.isRequired,
+}
+```
