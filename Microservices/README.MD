@@ -1,4 +1,5 @@
 # SOA VS Mircoservice
+
 Microservices are fine-grained SOA components. In other words, a single SOA
 component can be decomposed in a number of microservices that can work together
 in order to provide the same level of functionality
@@ -12,4 +13,5 @@ and nowadays the modern frameworks such as Ruby on Rails do not even consider
 such complex pieces of software.
 
 # NodeJS drawback
+
 Due to it uses sigle tread, it results in bad performance on CPU intensive computing (concurrent computing or grid computing)
