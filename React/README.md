@@ -84,3 +84,21 @@ FunctionAsChild.propTypes = {
   children: React.PropTypes.func.isRequired,
 }
 ```
+
+## Uncontrolled Components
+
+where we do not set the value of the input field, but we let the component manage its internal state.
+
+## Controlled Components
+
+We have full control over the value of the fields
+
+## Event
+
+- Synthetic Event
+
+A Synthetic Event is an object that wraps the original event object provided by the browser, and it has the same properties, no matter the browser where it is created.
+
+- single global handler
+- event bubbling: What it does instead is attach a single event handler to the root element, which listens to all the events,
+- single global handler : When an event we are interested in is fired by the browser, React calls the handler on the specific components on its behalf.
