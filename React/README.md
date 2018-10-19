@@ -102,3 +102,19 @@ A Synthetic Event is an object that wraps the original event object provided by 
 - single global handler
 - event bubbling: What it does instead is attach a single event handler to the root element, which listens to all the events,
 - single global handler : When an event we are interested in is fired by the browser, React calls the handler on the specific components on its behalf.
+
+## Server side rendering
+
+- SEO :One of the main reasons we may want to render our applications on the server-side is Search Engine Optimization (SEO).
+- A common code base: We do not have many options on the client: our applications have to be written in JavaScript. There are some languages that can be converted into JavaScript at build time, but the concept does not change.
+- Better performance:we all love client-side applications, because they are fast and responsive, but there is a problem: the bundle has to be loaded and run before users can take any action on the application.
+
+`SSR or not`
+
+- If your page is non-interactive don't render it in the browser (Only render the page to HTML on the server.) (Not only is computational time saved by skipping rendering to the DOM but also load time is saved by skipping loading JavaScript code.)
+
+- If your page is non-interactive and doesn't change on every request, then render it on the server at build-time.
+
+- The SSR should be enabled on when strictly needed. For example, if you need SEO or if you need to customize the social sharing information, you should start thinking about it.
+
+- If you realize that your application takes a lot of time to fully load and you have already done all the optimization (see the following chapter for more about this topic), you can consider using server-side rendering to offer a better experience to your users and improve the perceived speed.
