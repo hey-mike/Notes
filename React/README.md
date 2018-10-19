@@ -34,16 +34,6 @@ http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html
 
 `withRouter` will cause rerender if enable it in `Route`, it has bo be used when export component.
 
-## PurComponent
-
-A PureComponent will always re-render if the state or props reference a new object. This implies that if we do not want to lose the benefits of PureComponent, we should avoid such structures:
-
-```
-<Entity values={this.props.values || []}/>
-```
-
-It is important to remember, that PureComponent skips the re-render operation not only for component itself, but also for all its children, so the best use case for PureComponent are presentational components which have no child components and no dependencies on the global state in the application.
-
 ## Fragment
 
 A common pattern in React is for a component to return multiple elements. Fragments let you group a list of children without adding extra nodes to the DOM.
@@ -118,3 +108,21 @@ A Synthetic Event is an object that wraps the original event object provided by 
 - The SSR should be enabled on when strictly needed. For example, if you need SEO or if you need to customize the social sharing information, you should start thinking about it.
 
 - If you realize that your application takes a lot of time to fully load and you have already done all the optimization (see the following chapter for more about this topic), you can consider using server-side rendering to offer a better experience to your users and improve the perceived speed.
+
+## Optimization
+
+- Webpack UglifyJsPlugin
+
+- Should component update
+
+- PurComponent
+
+A PureComponent will always re-render if the state or props reference a new object. This implies that if we do not want to lose the benefits of PureComponent, we should avoid such structures:
+
+```React
+<Entity values={this.props.values || []}/>
+```
+
+It is important to remember, that PureComponent skips the re-render operation not only for component itself, but also for all its children, so the best use case for PureComponent are presentational components which have no child components and no dependencies on the global state in the application.
+
+- Stateless functional components: Another concept that is sometimes counter-intuitive for beginners is the fact that stateless components do not give us any benefits regarding performance.
