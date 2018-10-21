@@ -126,3 +126,35 @@ A PureComponent will always re-render if the state or props reference a new obje
 It is important to remember, that PureComponent skips the re-render operation not only for component itself, but also for all its children, so the best use case for PureComponent are presentational components which have no child components and no dependencies on the global state in the application.
 
 - Stateless functional components: Another concept that is sometimes counter-intuitive for beginners is the fact that stateless components do not give us any benefits regarding performance.
+
+## Testing
+
+There are generally two ways of testing React components, by:
+
+- Shallow rendering
+- Mounting the components into a detached DOM
+
+Before starting, it is important to have a clear idea about what we want to test and why.
+The following list represents more or less all the variations and functionalities of the component that are worth testing:
+
+- The state is initialized with the value coming from the props
+- The placeholder prop is correctly used in the element
+- The right class names are applied following the conditional logic
+- The state is updated whenever the value of the field changes
+- The onSave callback is fired according to the different states and conditions
+
+`Snapshot Testing`: Snapshots are pictures of the component with some props at a given point in time. Every time we run the tests, Jest creates new pictures and it compares them with the previous ones to check if something has changed, and It shows us what's changed in the current snapshot.
+
+`Test coverage`: in some scenarios it is useful to get some measurement of the coverage and keep track of the numbers. In big projects with many different modules, doing so makes it easy to spot files that have not been adequately tested or that have not been tested at all.
+
+### Common testing solutions
+
+- Testing Higher-Order Components
+- The Page Object pattern
+
+### Error handling with React
+
+The best thing we can do when problems happen in our applications is:
+
+- Notify the users and help them understand what happened and what they should do
+- Collect all useful information about the error and the state of the application in order to reproduce it and fix bugs quickly
