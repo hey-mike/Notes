@@ -158,3 +158,14 @@ The best thing we can do when problems happen in our applications is:
 
 - Notify the users and help them understand what happened and what they should do
 - Collect all useful information about the error and the state of the application in order to reproduce it and fix bugs quickly
+
+## Avoid Anti-pattern
+
+1. Map data key
+
+- The key has to be unique and stable, identifying one, and only one, item
+- use the value of the item if we expect it not to be repeated within the list, or create a unique identifier.
+
+1. Spreading props on DOM elements
+
+- create a prop called domProps that we can spread safely to the component because we are explicitly saying that it contains valid DOM properties
