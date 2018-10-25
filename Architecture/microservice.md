@@ -111,13 +111,13 @@ The answer to this question is quite simple. A message bus is a physical compone
 - RabbitMQ
 - Kafka
 
-## Caching tools
+#### Caching tools
 
 - Memcached
   classic process of using cache, Memcached is simple and practical to use. The performance of Memcached is fully linked to the use of memory. If Memcached uses the disc to register any data, the performance is seriously compromised; moreover, Memcached does not have any record of disk capacity and always depends on third-party tools for this.
 - Redis
 
-## Fail alert tools
+#### Fail alert tools
 
 four major points of failure when it comes to microservices
 
@@ -129,3 +129,9 @@ four major points of failure when it comes to microservices
   - Provide support to specific users interrupted by an error
   - Detect and thwart fraud as it's attempted: unusual amounts of failures on purchases, authentication, and other critical areas
   - External integrations
+
+### Locale proof performance
+
+- Apache Benchmark
+- WRK
+- Locust
