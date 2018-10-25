@@ -82,3 +82,25 @@ Anemic domains are very harmful to the microservices ecosystem, because they hav
 ### Fat domain - AAA (Authentication, Authorization, and Accounting
 
 The division of this fat domain can be held in two parts; the first part is AAAService and the second is UserService. Another approach is the AAA responsibility for a gateway API. The functional scalability and features of implementation with these separate domains is much more interesting for the growth of the product as a whol
+
+## Things to consider
+
+Cost and scability:
+
+- Programming languages
+- Microservices frameworks
+- Binary communication
+- Message broker
+- Caching tools
+- Fail alert tools
+- Locale proof performance
+
+## Death Start
+
+The Death Star is an anti-pattern where there is communication between the recursion microservices, and making progress becomes extremely complicated or expensive for a product.
+
+## Message broker
+
+why not use this messaging for all types of communication between microservices?
+
+The answer to this question is quite simple. A message bus is a physical component within the stack of microservices. It needs to be scaled just like any other physical component-based data storage and cache. This means that with a high-volume message, the synchronous mode of communication could be committed to an unwanted delay in the responses of the processes.
