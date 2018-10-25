@@ -99,8 +99,33 @@ Cost and scability:
 
 The Death Star is an anti-pattern where there is communication between the recursion microservices, and making progress becomes extremely complicated or expensive for a product.
 
-## Message broker
+## Message broker - Async communication between services
 
 why not use this messaging for all types of communication between microservices?
 
 The answer to this question is quite simple. A message bus is a physical component within the stack of microservices. It needs to be scaled just like any other physical component-based data storage and cache. This means that with a high-volume message, the synchronous mode of communication could be committed to an unwanted delay in the responses of the processes.
+
+### Tools
+
+- ActiveMQ
+- RabbitMQ
+- Kafka
+
+## Caching tools
+
+- Memcached
+  classic process of using cache, Memcached is simple and practical to use. The performance of Memcached is fully linked to the use of memory. If Memcached uses the disc to register any data, the performance is seriously compromised; moreover, Memcached does not have any record of disk capacity and always depends on third-party tools for this.
+- Redis
+
+## Fail alert tools
+
+four major points of failure when it comes to microservices
+
+- Performance - New Relic and Datadog
+- Build - Jenkins, Travis
+- Components - Nagios and Zabbix are also very useful for making aid work to health check endpoints.
+- Implementation failures - Sentry
+  - See the impact of new deployments in real time
+  - Provide support to specific users interrupted by an error
+  - Detect and thwart fraud as it's attempted: unusual amounts of failures on purchases, authentication, and other critical areas
+  - External integrations
