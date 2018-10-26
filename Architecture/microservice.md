@@ -135,3 +135,13 @@ four major points of failure when it comes to microservices
 - Apache Benchmark
 - WRK
 - Locust
+
+## Internal Patterns
+
+### Developing the structure
+
+### Caching strategies
+
+### CQRS – query strategy
+
+### Event sourcing – data integrity
