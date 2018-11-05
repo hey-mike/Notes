@@ -36,7 +36,7 @@ three are more prominent for efficient microservices:
 |              |       One-to-One        |             One-to-Many |
 | ------------ | :---------------------: | ----------------------: |
 | Synchronous  |    Request/response     |                       - |
-| Asymchronous |      Notification       |        publish/subsribe |
+| Asynchronous |      Notification       |        publish/subsribe |
 |              | Request/ async response | publish/async responses |
 
 ### Synchronous
@@ -138,10 +138,40 @@ four major points of failure when it comes to microservices
 
 ## Internal Patterns
 
-### Developing the structure
+- Developing the structure
+- Caching strategies
+- CQRS – query strategy
+- Event sourcing – data integrity
 
-### Caching strategies
+## CQRS(Command Query Responsibility Segregation)
 
-### CQRS – query strategy
+As the name implies, it is about separating the responsibility of writing and reading of data. CQRS is a code pattern and not an architectural pattern.
 
-### Event sourcing – data integrity
+`Will just scaling the application servers solve all our problems?`
+
+- Deadlocks, timeouts, and slowness mean that your database may be in too much demand.
+- Complex queries can be performed to obtain database data. ORMs can add even more complexity to the data filtering process by mapping entities and filtering data by using joins in different tables.
+- Content obsolescence could be true
+
+The CQRS teaches us the division of responsibility for writing and reading data, both conceptual and using different physical storages. This means that there will be separate means for recording and retrieving data from the databases. Queries are done synchronously in a separate denormalized database, and writes asynchronously to a normalized database. Caching first is still a type of CQRS implementation at the conceptual level.
+
+**Command** will be responsible for modifying the state of the data in the application, **Query** is the operation responsible for retrieving information from the database.
+
+**Synchronization**: The following are some strategies to keep the foundations of reading and recording synchronized, and it is necessary to choose the one that best meets your scenario:
+
+- Automatic updating: All changes in the state of a given recording database raise a synchronous process to update on the bench
+- Update possible: All state changes of a given recording database trigger an asynchronous process to update the reading bank, offering an eventual data consistency
+- Controlled update: A regular process and schedule is raised to synchronize the databases
+- Update on demand: Every query checks the consistency of the read base compared to the recording, and forces an update if it is out of date
+
+Any update is one of the most used strategies, because it assumes that any given displayed data may already be out of date, so it is not necessary to impose a synchronous update process.
+
+**Queueing**: Many CQRS implementations may require a message broker for the processing of commands and events.
+
+## Event sourcing – data integrity
+
+- Each change in the current state of your database would be a new event in a stream that only allows inclusion.
+- Each update on the table would generate a new line, the change of status
+- uses the append only model for database records
+
+## Aggregator Microservice Design Pattern
