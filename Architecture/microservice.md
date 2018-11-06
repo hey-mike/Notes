@@ -247,3 +247,27 @@ Cons:
 - The difficulty of debugging
 
 ## Branch Microservice Design Pattern
+
+Rules:
+
+- The composition of the response using direct call chains cannot extend one direct call to another microservice
+- If more values are required for the response, an aggregation logic is created that will trigger concurrent requests for as many chains as needed
+
+Internal communication within a microservice can be worked on in the following three ways:
+
+- Sequential: No concurrency or parallelism. This means that when we have to send messages from the commands to the microservices, the entire process will be a sequence. If you need to execute four commands to compose the data, all of them will be executed in a sequence.
+- Threads: In this case, both POSIX threads (pthreads) and green threads can be used. Controlling threads is often not simple for developers, and if a thread fails, data orchestration could be compromised. However, it is the most practical way because there is no need for any external components of the programming language to be used for creating some level of competition or parallelism in the execution of the commands.
+- Message Broker: The use of a transactional message broker for transmitting sensitive data within a microservice is quite usual. The disadvantage is the addition of a physical component within a microservice. However, the advantage is the ability to execute strategies that offer more resiliency in data transmission. The simple fact of working with transactions is already a great resource.
+
+Pros:
+
+- The flexibility of implementation
+- Independent scalability
+- Encapsulation of access to microservices
+- Compositional ability and orchestration
+
+Cons:
+
+- The possibility of latency points
+- The difficulty in understanding data ownership
+- The difficulty of debugging
