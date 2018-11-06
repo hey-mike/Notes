@@ -175,3 +175,24 @@ Any update is one of the most used strategies, because it assumes that any given
 - uses the append only model for database records
 
 ## Aggregator Microservice Design Pattern
+
+Best practices:
+
+- Segregated database: This allows us to better scale our application, especially in the data storage layer.
+- Microservice encapsulation: This divides the microservices into two layers—Public Facing Services and Internal Services. Such a division allows for greater flexibility with respect to the signature microservices, as Internal Services can be modified more easily.
+- Applied CQRS: With CQRS, unnecessary stress points on the application were removed.
+- Applied event sourcing: With event sourcing, we are conducting a stream of information from a news article. This gives us a real vision of the history of each news article.
+- Applied pattern very scalable: With a strong pattern and understanding of how to scale the aggregator pattern, we have a clear vision of how to avoid anti-patterns.
+
+Pros:
+
+- Scalability of both the x-axis and z-axis
+- Tunneling microservices
+- Microservices signature flexibility to Internal Services
+- Providing a single access point for microservices
+
+Cons:
+
+- Complexity to orchestrate data
+- Bottleneck anti-pattern
+- Latency in communication between microservices
