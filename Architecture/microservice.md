@@ -29,7 +29,7 @@ three are more prominent for efficient microservices:
 
 - x-axis: horizontal decomposition: with the same application server replicated n times in full and in a balanced order of 1/n.
 - y-axis: functional decomposition: a verb or route is used by the balancer to identify where to go with the request.
-- z-axis: data partitioning: is very similar to the x-axis when it comes to scalability structure, as it distributes exactly the same code on each server. The big difference is that each server responds to a specific subset of dat
+- z-axis: data partitioning: is very similar to the x-axis when it comes to scalability structure, as it distributes exactly the same code on each server. The big difference is that each server responds to a specific subset of data
 
 ## Communication
 
@@ -215,3 +215,35 @@ Cons:
 - Bottleneck
 - Inappropriate change of response
 - Obstruction in the identification of overload
+
+## Chained Microservice Design pattern
+
+**Big Ball of Mud Anti-patern**:developing microservices that we do not define well in the domains, which makes microservices dependent on one another to complete trivial tasks. This type of error generates a series of unnecessary calls between the microservices, creating complex problems of being corrected, such as latency and, in the worst cases, cyclic-deployed dependency.
+
+Main characteristics:
+
+- **Poorly defined domain**: The domain is badly defined, forcing a direct connection with other microservices. Access points to the microservice do not require enough data to process a task, which forces the inference of data, searching in other microservices.
+- **Mandatory direct communication**: When direct communication between microservices is mandatory for most tasks or for all tasks, there is a problem. This indicates that the microservice is anemic or that the application as a whole is poorly developed.
+- **Deploy clustered**: When a microservice cannot be sent for production because it needs another microservice all together, or when the change of internal signatures of a microservice causes others to collapse, there is a Death Star anti-pattern issue. Creating business dependencies between microservices means that processes are not automated and fluid.
+
+_Solution_:
+Correlation ID: A simple way to implement correlation ID using HTTP would be to send a UUID in the header of the requests and use this UUID as an identifier to write the logs.
+
+### Purest microservices
+
+The microservices in your business design should be pure. This means that a microservice must be extremely small in its domain and fully capable of performing its function without outside interference from other microservices.
+
+Pros:
+
+- Practical implementation
+- Dynamism for business
+- Independent scalability
+- Encapsulation of access to microservices
+
+Cons:
+
+- The possibility of latency points
+- The difficulty in understanding data ownership
+- The difficulty of debugging
+
+## Branch Microservice Design Pattern
