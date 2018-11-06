@@ -196,3 +196,22 @@ Cons:
 - Complexity to orchestrate data
 - Bottleneck anti-pattern
 - Latency in communication between microservices
+
+## Proxy design pattern
+
+- Dumb proxy - the only goal is to provide a single endpoint to facilitate the application clients and encapsulate direct access to the routes of microservices.
+- Smart proxy - The most commonly seen task being executed by a Smart proxy is the content modification.
+
+Pros:
+
+- Practical data consumption by the application clients
+- Ease of implementation
+- Possibility of good programming techniques at proxy level, such as caching
+- Encapsulation of access to microservices
+- Control and diversion of requests
+
+Cons:
+
+- Bottleneck
+- Inappropriate change of response
+- Obstruction in the identification of overload
