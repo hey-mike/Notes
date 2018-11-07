@@ -271,3 +271,18 @@ Cons:
 - The possibility of latency points
 - The difficulty in understanding data ownership
 - The difficulty of debugging
+
+## Asynchronous messaing design pattern
+
+Pros:
+
+- Independent scalability
+- Extreme scalability
+- Lazy processing
+- Encapsulation of accesses to microservices
+
+Cons:
+
+- Complexity in the monitoring of requisitions
+- Complexity of the initial understanding of the pattern
+- Difficulty of debugging
