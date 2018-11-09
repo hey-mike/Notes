@@ -286,3 +286,7 @@ Cons:
 - Complexity in the monitoring of requisitions
 - Complexity of the initial understanding of the pattern
 - Difficulty of debugging
+
+## replese piplelines
+
+Build -> Unit Test -> Integration Test -> End-to-End test -> realse
