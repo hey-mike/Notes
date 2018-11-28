@@ -290,3 +290,8 @@ Cons:
 ## replese piplelines
 
 Build -> Unit Test -> Integration Test -> End-to-End test -> realse
+
+## Monitoring a single service
+
+- `Active Monitoring`is when the server that is to be monitored sends the status information to the monitoring tool
+- `Passive Monitoring` is when the monitoring tool requests information about the state of the machine or application from the server
