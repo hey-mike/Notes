@@ -295,3 +295,22 @@ Build -> Unit Test -> Integration Test -> End-to-End test -> realse
 
 - `Active Monitoring`is when the server that is to be monitored sends the status information to the monitoring tool
 - `Passive Monitoring` is when the monitoring tool requests information about the state of the machine or application from the server
+
+## Multiple service instances per host
+
+**Pros**
+One of the key benefits is that it uses resources efficiently. Multiple instances of the service share the server and its operating system. Another benefit of this pattern is the relatively rapid deployment of a microservice instance.
+
+**Cons**
+A major disadvantage is that there is little to no isolation of instances of the service unless each service instance is a separate process. If the instances are not separated in different processes, an instance with errors could compromise the entire process, besides making the individual monitoring of instances impossible.
+
+## Service instance per host
+
+- Service instance per VM: Each instance of a microservice is a VM, and the execution of this VM enables the microservice to work.
+
+  - Pros: One of the main benefits of VMs is that each instance of microservice runs in a completely isolated manner, having fixed CPU and memory consumption, without competing for resource consumption with other microservices. Another great benefit of this pattern is the encapsulation of the technology used in the development of microservices.
+  - Cons: Each service instance has the overhead of a full VM, including the operating system. Another disadvantage of this approach is that deploying and booting a new version of a microservice is often slow because the cost of booting operating systems using VMs can be high.
+
+- Service instance per container: each microservice instance runs in a container unique to the instance.
+  - Pros: They isolate their instances of microservices from one another. Containers are easily monitored. In addition, similar to the VMs, the containers encapsulate the technology used to implement microservices. Unlike the virtual machines, the containers are lighter. The container images are usually very fast to build and initialize.
+  - Cons: There are some disadvantages to using containers. Containers are not as secure as VMs because they share the host operating system kernel with each other.Another disadvantage of the containers is the complexity of the infrastructure if they are not using any cloud platform that offers interesting mechanisms to manipulate the containers.
