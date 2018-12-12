@@ -169,3 +169,28 @@ The best thing we can do when problems happen in our applications is:
 1. Spreading props on DOM elements
 
 - create a prop called domProps that we can spread safely to the component because we are explicitly saying that it contains valid DOM properties
+
+## HOC
+
+`JavaScript
+import React from 'react';
+
+// We receive a component constructor as an argument
+const makeRed = (Component) => {
+// We make a new component constructor that takes props, just as any component
+const wrappedComponent = (props) => {
+// This new component returns the original component, but with the style applied
+return (
+// But we also use the ES6 spread operator to apply the regular props passed in.
+// The spread operator applies props like the text in <RedButton text="hello" />
+to our new component
+// It will "spread" any and all props across our component
+<Component style={{ backgroundColor: 'red', color: 'white' }} {...props} />
+);
+};
+// We return the new constructor, so it can be called as <RedButton /> or <RedAlertBox />
+return wrappedComponent;
+}
+
+export default makeRed;
+`
