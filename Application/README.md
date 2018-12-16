@@ -36,3 +36,10 @@ It is better to use traditional way to create a static sites, simply use JQuery,
 If there are more user interactions, or more UI components have to be managed, more like an application, then I will go with Angular/ React, but in general case, I will choose React, I can see React is exceptional to build widgets.
 
 Moreover, if I want to build a large platform, for example, a PAAS business, I will choose Angular, due to sctrict type checking, it is imperative to maintain large code base.
+
+## RAIL model
+
+- Response: 100 ms to provide a response that acknowledges their action; otherwise, users will notice and get frustrated, and maybe retry the action, causing more problems down the line (we've all experienced this--the mad double- and triple-clicking).
+- Animation: users will note a lag in animations if they are not performed at 60 fps. This will negatively affect the perceived performance (how the user feels about your app's speed).
+- Idle: Once your application is done loading, it is idle (and also will be idle between actions) until a user performs an action.
+- Load: Optimal load time is one second (or less). That doesn't mean your entire application loads in one second; it means the user sees content within one second. They get some sense that the current task (loading the page) is progressing in a meaningful way, rather than staring at a blank white screen. As we'll see, this is easier said than done!
