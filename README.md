@@ -75,6 +75,19 @@ Multipart upload allows you to upload a single object as a set of parts. Each pa
 - Essential C# 7.0, six edition
 - ASP.NET Core with Angular
 - React Design patterns and Best Practices
+- How to Kill the Scrum Monster: Quick Start to Agile Scrum Methodology and the Scrum Master Role
+- Redux in Action
+- React and React Native
+- React 16 Tooling
+- Pro Angular 6
+- Hands-On Microservices with Node.js
+- Microservice Patterns and Best Practices
+
+## Reading list (2019)
+
+- Hands-On Full-Stack Web Development with GraphQL and React
+- Clean Architecture: A Craftsman's Guide to Software Structure and Design, First Edition
+- Designing Data-Intensive Applications
 
 ## Reading queue
 
