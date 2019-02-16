@@ -1,5 +1,5 @@
-
 ## Behavioral Pattern
+
 **Strategy pattern**
 In Strategy pattern, a class behavior or its algorithm can be changed at run time. This type of design pattern comes under behavior pattern.
 
@@ -12,6 +12,7 @@ Command pattern is a data driven design pattern and falls under behavioral patte
 Observer pattern is used when there is one-to-many relationship between objects such as if one object is modified, its depenedent objects are to be notified automatically. Observer pattern falls under behavioral pattern category.
 
 ## Structural Pattern
+
 **Adapter pattern**
 Adapter pattern works as a bridge between two incompatible interfaces. This pattern involves a single class which is responsible to join functionalities of independent or incompatible interfaces.
 
