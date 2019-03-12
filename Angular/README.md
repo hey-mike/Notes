@@ -76,6 +76,12 @@ When come to user interface in front-end development, especially nowadays SPA is
 
 Diffrerent parts of an appliation have different responsibilities (components, directives etc.) are segregated across manany different files, but they all need to reflect the same underlying state. One of the common best practices for keeping and tracking state was to manage it in services, however, how to traces the state is complately relied on the developer.
 
-
+Benefits:
+- **One place for state**: a store solution dicates keeping the sate of the application in one directory. This makes it esaier to predict updates or changes to the state's structure and how it is manipulated and stored before it is saved by the reducer.
+- **Perfomance**: Utilizing unidirectional flow, replying on individual state changes other changes all components, it will make change detection more precis and performant, as it is intented to make use of the marking of direct parths in need of updating.
+- **Testability**: Easy to test with reducers (pure functions which don't produce side effect), since the input and output should be the same.
+- **Devtools**: Monitor it for changes, helps develop to understand how, when and why things go wrong while developing.
 
 > Case one: When you have to deal with observables and when responsability for some observable data is shared between different components. In this case store actions and reducers ensure that data modifications will always be performed in the desired way. It can also provide a reliable solution for http requests caching. it can store the requets and responses, so that 
+
+> Case two: There no much difference when dealing with constant data, however, when serveral components will have to update the data, there will be a problem for angular to deal with change detection, and cause improper update issues.
