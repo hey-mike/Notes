@@ -67,3 +67,15 @@ _Jasmine.JS_ BDD test for Angular
 https://stackoverflow.com/questions/38120756/angular2-router-navigate-refresh-page
 
 Input type (type = "button) is important to make naviation animation works in angular 4, without specifying type, it works on IE11 and Edge browsers, but would reload the application in Chrome.
+
+
+## Why Angular need state management?
+State management is one of the most important aspects of software development. With each development project, thre's some sort of tracking being done of data over time as well as of any updates made to that data.
+
+When come to user interface in front-end development, especially nowadays SPA is getting richer and more complex, it is important to have a single source of truth when it comes to data. Since JavaScript is using duck typing, it is very easy to lose a frerence to a data structure, and by using weak reference (ghost references) could cause a false presentation of the wrong data.
+
+Diffrerent parts of an appliation have different responsibilities (components, directives etc.) are segregated across manany different files, but they all need to reflect the same underlying state. One of the common best practices for keeping and tracking state was to manage it in services, however, how to traces the state is complately relied on the developer.
+
+
+
+> Case one: When you have to deal with observables and when responsability for some observable data is shared between different components. In this case store actions and reducers ensure that data modifications will always be performed in the desired way. It can also provide a reliable solution for http requests caching. it can store the requets and responses, so that 
