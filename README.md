@@ -88,6 +88,7 @@ Multipart upload allows you to upload a single object as a set of parts. Each pa
 - Hands-On Full-Stack Web Development with GraphQL and React
 - Clean Architecture: A Craftsman's Guide to Software Structure and Design, First Edition
 - Designing Data-Intensive Applications
+- IOS 11 Programming with SWIFT: Develop iOS mobile applications from scratch
 
 ## Reading queue
 
