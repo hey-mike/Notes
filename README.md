@@ -89,6 +89,7 @@ Multipart upload allows you to upload a single object as a set of parts. Each pa
 - Clean Architecture: A Craftsman's Guide to Software Structure and Design, First Edition
 - Designing Data-Intensive Applications
 - IOS 11 Programming with SWIFT: Develop iOS mobile applications from scratch
+- Hands-on Resful Service With TypeScript 3
 
 ## Reading queue
 
