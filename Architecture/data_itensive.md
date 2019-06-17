@@ -1,4 +1,4 @@
-# Data-intensive architecute
+# Data-intensive architecure
 
 ## A data-intensive application
 
@@ -27,6 +27,6 @@ As the system grows (in data volume, traffic volume, or complexity), there shoul
 `Maintainability`
 Over time, many different people will work on the system (engineering and operations, both maintaining current behavior and adapting the system to new use cases), and they should all be able to work on it productively. See “Maintainability”.
 
-## Lagacy system
+## Legacy system
 
 Many people working on software systems dislike maintenance of so-called legacy systems—perhaps it involves fixing other people’s mistakes, or working with platforms that are now outdated, or systems that were forced to do things they were never intended for
