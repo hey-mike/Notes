@@ -16,7 +16,7 @@ A data-intensive application is typically built from standard building blocks th
 
 - Periodically crunch a large amount of accumulated data (batch processing)
 
-## three concerns that are important in most software systems:
+### three concerns that are important in most software systems:
 
 `Reliability`
 The system should continue to work correctly (performing the correct function at the desired level of performance) even in the face of adversity (hardware or software faults, and even human error). See “Reliability”.
@@ -27,6 +27,20 @@ As the system grows (in data volume, traffic volume, or complexity), there shoul
 `Maintainability`
 Over time, many different people will work on the system (engineering and operations, both maintaining current behavior and adapting the system to new use cases), and they should all be able to work on it productively. See “Maintainability”.
 
-## Legacy system
+### Legacy system
 
 Many people working on software systems dislike maintenance of so-called legacy systems—perhaps it involves fixing other people’s mistakes, or working with platforms that are now outdated, or systems that were forced to do things they were never intended for
+
+## Storage and retrieval
+
+### Data Structures of Database
+
+Comparing characteristics of transaction processing versus analytic systems:
+
+| Property             |       Transaction processing systems (OLTP)       |                   Analytic systems (OLAP) |
+| -------------------- | :-----------------------------------------------: | ----------------------------------------: |
+| Main read pattern    | Small number of records per query, fetched by key |    Aggregate over large number of records |
+| Main write pattern   | Random-access, low-latency writes from user input |         Bulk import (ETL) or event stream |
+| Primarily used by    |      End user/customer, via web application       |    Internal analyst, for decision support |
+| What data represents |   Latest state of data (current point in time)    | History of events that happened over time |
+| Dataset size         |              Gigabytes to terabytes               |                    Terabytes to petabytes |
