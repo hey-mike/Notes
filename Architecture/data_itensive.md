@@ -44,3 +44,15 @@ Comparing characteristics of transaction processing versus analytic systems:
 | Primarily used by    |      End user/customer, via web application       |    Internal analyst, for decision support |
 | What data represents |   Latest state of data (current point in time)    | History of events that happened over time |
 | Dataset size         |              Gigabytes to terabytes               |                    Terabytes to petabytes |
+
+## Encoding and Evolution
+
+Problems of encoding libraries:
+
+- The encoding is often tied to a particular programming language, and reading the data in another language is very difficult. If you store or transmit data in such an encoding, you are committing yourself to your current programming language for potentially a very long time, and precluding integrating your systems with those of other organizations (which may use different languages).
+
+- In order to restore data in the same object types, the decoding process needs to be able to instantiate arbitrary classes. This is frequently a source of security problems: if an attacker can get your application to decode an arbitrary byte sequence, they can instantiate arbitrary classes, which in turn often allows them to do terrible things such as remotely executing arbitrary code [6, 7].
+
+- Versioning data is often an afterthought in these libraries: as they are intended for quick and easy encoding of data, they often neglect the inconvenient problems of forward and backward compatibility.
+
+- Efficiency (CPU time taken to encode or decode, and the size of the encoded structure) is also often an afterthought. For example, Java’s built-in serialization is notorious for its bad performance and bloated encoding.
