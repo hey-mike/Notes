@@ -1,4 +1,4 @@
-# Data-intensive architecure
+# Foundation of Data System
 
 ## A data-intensive application
 
@@ -104,3 +104,18 @@ Using a message broker has several advantages compared to direct RPC:
 - It logically decouples the sender from the recipient (the sender just publishes messages and doesn’t care who consumes them).
 
 However, a difference compared to RPC is that message-passing communication is usually one-way: a sender normally doesn’t expect to receive a reply to its messages. It is possible for a process to send a response, but this would usually be done on a separate channel. This communication pattern is asynchronous: the sender doesn’t wait for the message to be delivered, but simply sends it and then forgets about it.
+
+**DISTRIBUTED ACTOR FRAMEWORKS**
+The actor model is a programming model for concurrency in a single process.
+
+## Rolling Upgrades
+
+In particular, many services need to support rolling upgrades, where a new version of a service is gradually deployed to a few nodes at a time, rather than deploying to all nodes simultaneously. Rolling upgrades allow new versions of a service to be released without downtime (thus encouraging frequent small releases over rare big releases) and make deployments less risky (allowing faulty releases to be detected and rolled back before they affect a large number of users). These properties are hugely beneficial for **evolvability**, the ease of making changes to an application.
+
+## data encoding formats and their compatibility properties
+
+- Programming language–specific encodings are restricted to a single programming language and often fail to provide forward and backward compatibility.
+
+- Textual formats like JSON, XML, and CSV are widespread, and their compatibility depends on how you use them. They have optional schema languages, which are sometimes helpful and sometimes a hindrance. These formats are somewhat vague about datatypes, so you have to be careful with things like numbers and binary strings.
+
+- Binary schema–driven formats like Thrift, Protocol Buffers, and Avro allow compact, efficient encoding with clearly defined forward and backward compatibility semantics. The schemas can be useful for documentation and code generation in statically typed languages. However, these formats have the downside that data needs to be decoded before it is human-readable.
