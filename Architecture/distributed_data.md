@@ -33,4 +33,19 @@ leader-based replication (also known as active/passive or master–slave replica
 
 3. When a client wants to read from the database, it can query either the leader or any of the followers. However, **writes are only accepted on the leader (the followers are read-only from the client’s point of view)**.
 
-## Synchronous Versus Asynchronous Replication
+### Synchronous Versus Asynchronous Replication
+
+1. Determining that the leader has failed
+2. Choosing a new leader
+3. Reconfiguring the system to use the new leader
+
+## Multi-Leader Replication
+
+1. Performance
+   In a single-leader configuration, every write must go over the internet to the datacenter with the leader. This can add significant latency to writes and might contravene the purpose of having multiple datacenters in the first place. In a multi-leader configuration, every write can be processed in the local datacenter and is replicated asynchronously to the other datacenters. Thus, the inter-datacenter network delay is hidden from users, which means the perceived performance may be better.
+
+2. Tolerance of datacenter outages
+   In a single-leader configuration, if the datacenter with the leader fails, failover can promote a follower in another datacenter to be leader. In a multi-leader configuration, each datacenter can continue operating independently of the others, and replication catches up when the failed datacenter comes back online.
+
+3. Tolerance of network problems
+   Traffic between datacenters usually goes over the public internet, which may be less reliable than the local network within a datacenter. A single-leader configuration is very sensitive to problems in this inter-datacenter link, because writes are made synchronously over this link. A multi-leader configuration with asynchronous replication can usually tolerate network problems better: a temporary network interruption does not prevent writes being processed.
