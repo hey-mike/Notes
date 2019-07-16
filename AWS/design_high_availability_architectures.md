@@ -75,3 +75,22 @@ best practices:
 - Native Direct Connect can be established without a provider. A native Direct Connect deployment has the organization place its own hardware in an AWS partner data center. Customers would rack their own equipment. Separate Direct Connect equipment within the same partner data center could be requested, or separate data center connection points could also be requested. If a third-party provider is chosen for Direct Connect, at the very least ensure the partner has terminations in different data centers.
 
 - Provision sufficient network capacity to ensure that the failure of one network connection does not overwhelm and degrade redundant connections.
+
+## High Availability Storage Services
+
+|                    |          S3 Standard           | S3 Standard-IA                 | S3 One Zone-IA | S3 Glacier                     |
+| ------------------ | :----------------------------: | ------------------------------ | -------------- | ------------------------------ |
+| Availability       |             99.99%             | 99.99%                         | 99.5%          | NA                             |
+| Availability Zones | Greater than or equal to three | Greater than or equal to three | One            | Greater than or equal to three |
+
+## High Availability Security Services
+
+- authentication elements (such as an IAM user or role) and
+- authorization elements (such as IAM policies) for a single application into multiple sets.
+- you might take the application instances running behind a load balancer and designate a small set that you can use for production validation
+
+## High Availability Monitoring Services
+
+- CloudWatch
+- Each Region is designed to be completely isolated from the other Regions, to achieve the greatest possible failure isolation and stability
+- CloudWatch does not aggregate data across regions. Therefore, metrics are completely separate between regions, and you should consider this in your overall design.
