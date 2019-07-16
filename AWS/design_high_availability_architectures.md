@@ -92,5 +92,5 @@ best practices:
 ## High Availability Monitoring Services
 
 - CloudWatch
-- Each Region is designed to be completely isolated from the other Regions, to achieve the greatest possible failure isolation and stability
+- Each Region is designed to be completely isolated from the other **Regions**, to achieve the greatest possible failure isolation and stability
 - CloudWatch does not aggregate data across regions. Therefore, metrics are completely separate between regions, and you should consider this in your overall design.
