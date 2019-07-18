@@ -165,3 +165,28 @@ Well-designed **sort keys** have two key benefits:
   - The table size is 20 GB or larger.
   - The table’s provisioned read throughput is not being fully used.
   - Sequential scan operations are too slow.
+
+## ELASTICACHE
+
+### Lazy Loading Versus Write Through
+
+- Scenario 1: Cache Hit
+
+  - When data is in the cache and isn’t expired:
+  - Application requests data from the cache.
+  - Cache returns the data to the application.
+
+- Scenario 2: Cache Miss
+
+  - When data isn’t in the cache or is expired:
+  - Application requests data from the cache.
+  - Cache doesn’t have the requested data, so it returns a null.
+  - Application requests and receives the data from the database.
+  - Application updates the cache with the new data.
+
+### Advantages and Disadvantages of Lazy Loading
+
+| Advantages                     | Disadvantages                                                                                                                                                                                                                                               |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Only requested data is cached. | If data is written to the cache only when there is a cache miss, data in the cache can become stale because there are no updates to the cache when data is changed in the database. This issue is addressed by the write through and adding TTL strategies. |
+| Node failures are not fatal.   |                                                                                                                                                                                                                                                             |
