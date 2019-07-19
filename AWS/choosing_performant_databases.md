@@ -236,3 +236,7 @@ If you are running a version of Redis prior to 2.8.22, you need to reserve more 
   - Scale-in might be partially successful if insufficient memory is available on target shards. If such a result occurs, review available memory and retry the operation, if necessary.
   - Slots with large items are not migrated. In particular, slots with items larger than 256 MB postserialization are not migrated.
   - The BRPOPLPUSH command is not supported if it operates on the slot being migrated. FLUSHALL and FLUSHDB commands are not supported inside Lua scripts during a resharding operation.
+
+## REDSHIFT
+
+> Amazon Redshift Spectrum allows you to store data in Amazon S3, in open file formats, and have it available for analytics without the need to load it into your Amazon Redshift cluster. It enables you to easily join data sets across Redshift clusters and S3 to provide unique insights that you would not be able to obtain by querying independent data silos.
