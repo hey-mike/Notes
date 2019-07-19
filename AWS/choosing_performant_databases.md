@@ -198,3 +198,41 @@ Well-designed **sort keys** have two key benefits:
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Data in the cache is never stale: Because the data in the cache is updated every time it is written to the database, the data in the cache is always current.                                                                                                                                                                             | Missing data: In the case of spinning up a new node, whether due to a node failure or scaling out, there is missing data that continues to be missing until it is added or updated on the database. This situation can be minimized by implementing lazy loading in conjunction with write through. |
 | Write penalty vs. read penalty: Every write involves two trips: a write to the cache and a write to the database. This adds latency to the process. That said, end users are generally more tolerant of latency when updating data than when retrieving data. There is an inherent sense that updates are more work and thus take longer. | Cache churn: Because most data is never read, a lot of data in the cluster is never read. This is a waste of resources. By adding TTL, you can minimize wasted space.                                                                                                                               |
+
+### What Is TTL
+
+Time to live (TTL) is an integer value that specifies the number of seconds (or milliseconds) until the key expires. When an application attempts to read an expired key, it is treated as though the key is not found, meaning that the database is queried for the key and the cache is updated. This does not guarantee that a value is not stale, but it keeps data from getting too stale and requires that values in the cache are occasionally refreshed from the database.
+
+### Avoid Running Out of Memory When Executing a Background Write
+
+- set reserved-memory-percent to 50 (50 percent) for Redis versions before 2.8.22 or 25 (25 percent) for Redis versions 2.8.22 and later.
+- The default value for reserved-memory is 0, which allows Redis to consume all of maxmemory with data, potentially leaving too little memory for other uses, such as a background write process.
+
+### How Much Reserved Memory Do You Need
+
+If you are running a version of Redis prior to 2.8.22, you need to reserve more memory for backups and failovers than if you are running Redis 2.8.22 or later. This requirement is due to the different ways that ElastiCache for Redis implements the backup process. The guiding principle is to reserve half of a node type’s maxmemory value for Redis overhead for versions prior to 2.8.22 and one-fourth for Redis versions 2.8.22 and later.
+
+### Parameters to Manage Reserved Memory
+
+- reserved-memory and reserved-memory-percent
+- Neither one of these parameters is part of the Redis distribution
+
+### Online Cluster Resizing
+
+- Recommendations on initiating resharding:
+
+  - Test your application
+  - Get early notification for scaling issues
+  - Ensure sufficient free memory is available before scaling in
+  - Initiate resharding during off-peak hours
+  - Review client timeout behavior
+
+- Recommendations on resharding
+
+  - Avoid expensive commands
+  - Follow Lua best practices
+
+- After resharding
+  - Scale-in might be partially successful if insufficient memory is available on target shards. If such a result occurs, review available memory and retry the operation, if necessary.
+  - Slots with large items are not migrated. In particular, slots with items larger than 256 MB postserialization are not migrated.
+  - The BRPOPLPUSH command is not supported if it operates on the slot being migrated. FLUSHALL and FLUSHDB commands are not supported inside Lua scripts during a resharding operation.
