@@ -46,9 +46,9 @@ When you need to join a large amount of data by using an equijoin, a hash join c
 
 ### Use TCP Keepalive Parameters
 
-- **tcp_keepalive_time** controls the time, in seconds, after which a keepalive packet is sent when no data has been sent by the socket (ACKs are not considered data). Amazon recommends
-- **tcp_keepalive_intvl** controls the time, in seconds, between sending subsequent keepalive packets after the initial packet is sent (set using the tcp_keepalive_time parameter). Amazon recommends
-- **tcp_keepalive_probes**is the number of unacknowledged keepalive probes that occur before the application is notified. Amazon recommends
+- **tcp_keepalive_time** controls the time, in seconds, after which a keepalive packet is sent when no data has been sent by the socket (ACKs are not considered data).
+- **tcp_keepalive_intvl** controls the time, in seconds, between sending subsequent keepalive packets after the initial packet is sent (set using the tcp_keepalive_time parameter).
+- **tcp_keepalive_probes** is the number of unacknowledged keepalive probes that occur before the application is notified.
 
 ## RDS
 
