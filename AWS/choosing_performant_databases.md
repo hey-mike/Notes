@@ -240,3 +240,62 @@ If you are running a version of Redis prior to 2.8.22, you need to reserve more 
 ## REDSHIFT
 
 > Amazon Redshift Spectrum allows you to store data in Amazon S3, in open file formats, and have it available for analytics without the need to load it into your Amazon Redshift cluster. It enables you to easily join data sets across Redshift clusters and S3 to provide unique insights that you would not be able to obtain by querying independent data silos.
+
+### best practices
+
+- Use a COPY command to load data.
+
+- Use a single COPY command to load from multiple files.
+
+- Split your load data into multiple files.
+
+- Compress your data files.
+
+- Use a manifest file.
+
+- Verify data files before and after a load.
+
+- Use a multi-row insert.
+
+- Use a bulk insert.
+
+- Load data in sort key order.
+
+- Load data in sequential blocks.
+
+- Use time-series tables.
+
+- Use a staging table to perform a merge (Upsert).
+
+- Schedule around maintenance windows.
+
+### Best Practices for Designing Queries
+
+- Design tables according to best practices to provide a solid foundation for query performance.
+
+- Avoid using select \*. Include only the columns you specifically need.
+
+- Use a CASE expression to perform complex aggregations instead of selecting from the same table multiple times.
+
+- Don’t use cross-joins unless absolutely necessary. These joins without a join condition result in the Cartesian product of two tables. Cross-joins are typically executed as nested-loop joins, which are the slowest of the possible join types.
+
+- Use subqueries in cases where one table in the query is used only for predicate conditions and the subquery returns a small number of rows (less than about 200).
+
+- Use predicates to restrict the data set as much as possible. In the predicate, use the least expensive operators that you can. Comparison Condition operators are preferable to LIKE operators. LIKE operators are still preferable to SIMILAR TO or POSIX operators.
+
+- Avoid using functions in query predicates. Using them can drive up the cost of the query by requiring large numbers of rows to resolve the intermediate steps of the query.
+
+- If possible, use a WHERE clause to restrict the data set. The query planner can then use row order to help determine which records match the criteria, so it can skip scanning large numbers of disk blocks. Without this, the query execution engine must scan participating columns entirely.
+
+- Add predicates to filter tables that participate in joins, even if the predicates apply the same filters. The query returns the same result set, but Amazon Redshift is able to filter the join tables before the scan step and can then efficiently skip scanning blocks from those tables. Redundant filters aren’t needed if you filter on a column that’s used in the join condition.
+
+- Use sort keys in the GROUP BY clause so the query planner can use more efficient aggregation. A query might qualify for one-phase aggregation when its GROUP BY list contains only sort key columns, one of which is also the distribution key. The sort key columns in the GROUP BY list must include the first sort key, then other sort keys that you want to use in sort key order. For example, it is valid to use the first sort key; the first and second sort keys; the first, second, and third sort keys; and so on. It is not valid to use the first and third sort keys
+
+### Work with Recommendations from Amazon Redshift Advisor
+
+Advisor recommendations are made up of the following sections:
+
+- Best practice recommendation: This is a brief summary of the recommendation.
+- Observation: Findings from tests run on your cluster to determine if a test value is within a specified range.
+- Recommendations: These recommendations provide specific steps to take and implementation tips
+- Provide feedback: Your feedback can be detailed and goes directly to the Amazon Redshift engineering team.
