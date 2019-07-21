@@ -34,7 +34,7 @@ DAX functions thanks to the following components:
 
 ## CLOUDFRONT
 
-CloudFront speeds up distribution of your content to your end users. It does this by delivering content from a worldwide network of data centers called **edge locations**. As with all caching solutions, the content might not be available in the cache for an end user (cache miss). When this happens, CloudFront can retrieve the content from an origin that you have defined. This location might be an S3 bucket or a web server that you have identified as the source of your content.
+CloudFront speeds up distribution of your content to your end users. It does this by delivering content from a worldwide network of **data centers called** **edge locations**. As with all caching solutions, the content might not be available in the cache for an end user (cache miss). When this happens, CloudFront can retrieve the content from an origin that you have defined. This location might be an S3 bucket or a web server that you have identified as the source of your content.
 
 ## GREENGRASS
 
@@ -54,7 +54,7 @@ Fortunately, the IoT devices do not need to maintain constant connectivity to th
 
 - **DNS resolver**: This DNS server acts as an intermediary between user requests (queries) and name servers; this is what you typically end up using when you send a DNS query from your web browser for a URL. Your system uses a DNS resolver managed by your ISP; it is often called a **recursive name server** because it sends requests to a sequence of authoritative name servers until it gets the response it needs.
 
-- **Hosted zone**: This is a container object for the DNS records. It has the same name as the corresponding zone name; for example, my domain ajsnetworking.com has a hosted zone that contains the records for name resolution of my web server and mail server. It also contains information about my subdomains like private.ajsnetworking.com.
+- **Hosted zone**: This is a container object for the DNS records. It has the same name as the corresponding zone name; for example, my domain ajsnetworking.com has a hosted zone that **contains the records** for name resolution of my web server and mail server. It also **contains information about my subdomains** like private.ajsnetworking.com.
 
 - **Private DNS**: This local version of Route 53 services directs traffic only for resources within your private VPCs in AWS.
 
@@ -77,3 +77,7 @@ Fortunately, the IoT devices do not need to maintain constant connectivity to th
   - **Weighted round robin**: This policy is used to direct traffic to multiple resources based on proportions that you can specify.
 
   - **Time to live (TTL)**: This policy sets the amount of time (in seconds) that you want a DNS resolver to cache the values for a record before submitting another request to Route 53 for current values of that record.
+
+- When Route 53 returns a record with a TTL set to a fairly high value, your resolver will be able to service that client again quickly, as well as other clients looking for the same resource.
+- Charges are based on, in part, the number of requests that Route 53 must respond to. you would need to set a small TTL if you are dealing with records that do, for whatever reason, change frequently.
+- If you want rapid failover to occur, short TTLs are a must.
