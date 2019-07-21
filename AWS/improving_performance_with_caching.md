@@ -34,7 +34,7 @@ DAX functions thanks to the following components:
 
 ## CLOUDFRONT
 
-CloudFront speeds up distribution of your content to your end users. It does this by delivering content from a worldwide network of **data centers called** **edge locations**. As with all caching solutions, the content might not be available in the cache for an end user (cache miss). When this happens, CloudFront can retrieve the content from an origin that you have defined. This location might be an S3 bucket or a web server that you have identified as the source of your content.
+CloudFront speeds up distribution of your content to your end users. It does this by delivering content from a worldwide network of data centers called **edge locations**. As with all caching solutions, the content might not be available in the cache for an end user (cache miss). When this happens, CloudFront can retrieve the content from an origin that you have defined. This location might be an S3 bucket or a web server that you have identified as the source of your content.
 
 ## GREENGRASS
 
