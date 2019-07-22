@@ -57,4 +57,52 @@
 
 #### Group
 
+An IAM group is a collection of IAM users. You can use groups to specify permissions for a collection of users, which can make those permissions easier to manage for those users
+
 > A group is not truly an identity because it cannot be identified as a principal in a resource-based or trust policy. It is only a way to attach policies to multiple users at one time
+
+#### Role
+
+- An IAM role is similar to a user, in that it is an identity with permission policies that determine what the identity can and cannot do in AWS
+- A role does not have any credentials associated with it. Instead of being uniquely associated with one person, a role is intended to be assumable by anyone who needs it.
+- An IAM user can assume a role to temporarily take on different permissions for a specific task
+- A role can be assigned to a federated user who signs in by using an external identity provider instead of IAM. AWS uses details passed by the identity provider to determine which role is mapped to the federated user.
+
+#### Policies
+
+- **Identity-based policies**: These policies are attached to users, groups, or roles.
+
+- **Resource-based policies**: These policies are attached to resources in AWS such as S3 buckets.
+
+- **Organization SCPs**: These policies allow the creation of a Service Control Policy (SCP); this permits you to define a permissions boundary to an AWS organization or organizational unit (OU).
+
+- **Access control lists (ACLs)**: These lists control what principals (users/roles/groups) can access a resource; this is the only policy type that does not use a JSON policy document structure.
+
+## SECURING THE OS AND APPLICATIONS
+
+### Security Groups
+
+- Security groups apply to network interfaces to control access to EC2 instances (and potentially other AWS resources).
+
+- Security groups are stateful in their operation; for example, a traffic flow explicitly permitted outbound will trigger a dynamic inbound permission of the return flow for that communication requirement.
+
+- Security groups are built by your PERMIT entries. With security groups, you do not create DENY entries.
+
+- You can reference other security groups from your VPC in your security group; you can also reference security groups in other VPCs that you have peered with.
+
+### Network ACLs
+
+- Network ACLs apply to subnets to control traffic in and out of these subnets.
+
+- Network ACLs are stateless in their operation; you must explicitly permit return flows based on flows permitted in the opposite direction.
+
+- You can use PERMIT and DENY entries with your network ACLs.
+
+- Network ACL entries are processed in order, and order is critically important.
+
+### Systems Manager Patch Manager
+
+AWS Systems Manager Patch Manager automates the process of patching managed instances with security-related updates
+
+- Patch Manager uses patch baselines, which include rules for auto-approving patches within days of their release, as well as a list of approved and rejected patches.
+- Patch Manager integrates with IAM, CloudTrail, and CloudWatch events to provide a secure patching experience that includes event notifications and the ability to audit usage
