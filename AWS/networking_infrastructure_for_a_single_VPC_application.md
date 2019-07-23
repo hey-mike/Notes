@@ -133,7 +133,7 @@ include the following attributes:
 - An Elastic IP address is a public IPv4 address, which is reachable from the Internet
 - AWS does not currently support Elastic IP addresses for IPv6
 
-### characteristics
+### Characteristics
 
 - To use an Elastic IP address, you first allocate one to your account and then associate it with your instance or a network interface.
 
@@ -156,7 +156,7 @@ include the following attributes:
 - A VPC endpoint enables you to privately connect your VPC to supported AWS services and VPC endpoint services powered by PrivateLink without requiring an Internet gateway, NAT device, VPN connection, or AWS Direct Connect connection. I
 - Instances in your VPC do not require public IP addresses to communicate with resources in the service. Traffic between your VPC and the other service does not leave the Amazon network.
 - Endpoints are virtual devices. They are highly available VPC components that allow communication between instances in your VPC and services without imposing availability risks or bandwidth constraints on your network traffic.
-- There are two types of VPC endpoints: **interface endpoints and gateway endpoints**. You should create the type of VPC endpoint required by the supported service.
+- There are **two types of VPC endpoints**: **interface endpoints and gateway endpoints**. You should create the type of VPC endpoint required by the supported service.
 
 ### Interface Endpoints (Powered by AWS PrivateLink)
 
@@ -214,13 +214,13 @@ A gateway endpoint is a gateway that is a target for a specified route in your r
 
 ## VPC PEERING
 
-- An AWS VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them privately. You can create a VPC peering connection between your own VPCs, with a VPC in another AWS account, or with a VPC in a different AWS Region.
+- An AWS VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them privately. You can create a VPC peering connection between your own VPCs, **with a VPC in another AWS account**, or **with a VPC in a different AWS Region**.
 - AWS uses the existing infrastructure of a VPC to create a VPC peering connection
 - it is neither a gateway nor a VPN connection, and does not rely on a separate piece of physical hardware.
 
 ## CLASSICLINK
 
-- ClassicLink allows you to link your EC2-Classic instance to a VPC in your account, within the same region.
+- ClassicLink allows you to link your **EC2-Classic** instance to a VPC in your account, within the same region.
 - This enables you to associate the VPC security groups with the EC2-Classic instance.
 - enabling communication between your EC2-Classic instance and instances in your VPC using private IPv4 addresses.
 - ClassicLink removes the need to make use of public IPv4 addresses or Elastic IP addresses to enable communication between instances in these platforms.
