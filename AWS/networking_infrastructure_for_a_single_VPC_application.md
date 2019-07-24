@@ -214,7 +214,7 @@ A gateway endpoint is a gateway that is a target for a specified route in your r
 
 ## VPC PEERING
 
-- An AWS VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them privately. You can create a VPC peering connection between your own VPCs, **with a VPC in another AWS account**, or **with a VPC in a different AWS Region**.
+- An AWS VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them privately. You can create a VPC peering **connection between your own VPCs**, **with a VPC in another AWS account**, or **with a VPC in a different AWS Region**.
 - AWS uses the existing infrastructure of a VPC to create a VPC peering connection
 - it is neither a gateway nor a VPN connection, and does not rely on a separate piece of physical hardware.
 
