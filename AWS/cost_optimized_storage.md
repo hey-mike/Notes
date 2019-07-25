@@ -45,7 +45,7 @@
 
 ## EFS SERVICES
 
-- There are additional charges for EFS File Sync. This is a pay-as-you-go model for data copied to EFS on a per-gigabyte basis. You can easily track this service with Amazon CloudWatch. The US West (Oregon) EFS File Sync price per month per gigabyte is \$0.01.
+- There are additional charges for EFS File Sync. This is a pay-as-you-go model for data copied to EFS on a per-gigabyte basis.** You can easily track this service with Amazon CloudWatch**. The US West (Oregon) EFS File Sync price per month per gigabyte is \$0.01.
 
 - In the default EFS Bursting Throughput mode, there is no charge for transfers as described previously given a baseline rate of 50 KB/s per gigabyte of throughput. The cost of EFS in US West (Oregon) given this default mode is \$0.30 per gigabyte per month.
 
