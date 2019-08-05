@@ -2,7 +2,7 @@
 
 ## Simple Storage Service (S3)
 
-### S3 Storage Classes
+### S3 Storage Classes (Reduced Redundancy Storage is the only S3 Class that does not offer 99.999999999%)
 
 1. Standard
 

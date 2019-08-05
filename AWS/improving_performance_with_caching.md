@@ -42,7 +42,7 @@ This service falls under the Internet of Things (IoT) category. It allows IoT de
 
 Fortunately, the IoT devices do not need to maintain constant connectivity to the cloud for Greengrass to function. **Greengrass provides a local publisher/subscriber message manager** that can buffer messages to and from the cloud when connectivity is disrupted
 
-## ROUTE 53
+## ROUTE 53 ( Simple, Weighted, Latency, Failover, Multivalue answer, Geoproximity. and Geolocation )
 
 - **Alias record**: This is a type of record you can create with Amazon Route 53 to direct traffic to AWS resources you control, such as CloudFront distributions or Amazon S3 buckets.
 
