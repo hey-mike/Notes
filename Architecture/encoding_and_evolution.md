@@ -32,4 +32,48 @@
 
 For data that is used only internally within your organization, there is less pressure to use a lowest-common-denominator encoding format. For example, **you could choose a format that is more compact or faster to parse**. For a small dataset, the gains are negligible, but once you get into the terabytes, the choice of data format can have a big impact. **JSON is less verbose than XML, but both still use a lot of space compared to binary formats**.
 
-**Apache Thrift**  and **Protocol Buffers** (protobuf)  are binary encoding libraries that are based on the same principle. **Apache Avro** is another binary encoding format that is interestingly different from Protocol Buffers and Thrift.
+**Apache Thrift** and **Protocol Buffers** (protobuf) are binary encoding libraries that are based on the same principle. **Apache Avro** is another binary encoding format that is interestingly different from Protocol Buffers and Thrift.
+
+## Modes of Dataflow
+
+### Dataflow Through Databases
+
+#### DIFFERENT VALUES WRITTEN AT DIFFERENT TIMES
+
+- A database generally allows any value to be updated at any time. This means that within a single database you may have some values that were written five milliseconds ago, and some values that were written five years ago.
+- When you deploy a new version of your application (of a server-side application, at least), you may entirely replace the old version with the new version within a few minutes
+- Rewriting (migrating) data into a new schema is certainly possible, but it’s an expensive thing to do on a large dataset, so most databases avoid it if possible.
+
+#### ARCHIVAL STORAGE
+
+data dump will typically be encoded using the latest schema, even if the original encoding in the source database contained a mixture of schema versions from different eras. Since you’re copying the data anyway, you might as well encode the copy of the data consistently.
+
+### Dataflow Through Services: REST and RPC
+
+- **The web works this way**: clients (web browsers) make requests to web servers, making GET requests to download HTML, CSS, JavaScript, images, etc., and making POST requests to submit data to the server. The API consists of a standardized set of protocols and data formats (HTTP, URLs, SSL/TLS, HTML, etc.). Because web browsers, web servers, and website authors mostly agree on these standards, you can use any web browser to access any website (at least in theory!)
+- a server can itself be a client to another service (for example, a typical web app server acts as client to a database). This approach is often used to **decompose a large application into smaller services by area of functionality**, such that one service makes a request to another when it requires some functionality or data from that other service. This way of building applications has traditionally been called a **service-oriented architecture (SOA)**, more recently refined and rebranded as **microservices** architecture
+- services are similar to databases: they typically allow clients to submit and query data.However, while databases allow arbitrary queries using the query languages, services expose an application-specific API that only allows inputs and outputs that are predetermined by the **business logic (application code)** of the service . **This restriction provides a degree of encapsulation**: services can impose fine-grained restrictions on what clients can and cannot do.
+- A **key design goal** of a service-oriented/microservices architecture is to make the application easier to change and maintain by making services independently deployable and evolvable
+
+#### WEB SERVICES
+
+When HTTP is used as the underlying protocol for talking to the service, it is **called a web service**.web services are not only used on the web, but in several different contexts:
+
+1. A client application running on a user’s device (e.g., a native app on a mobile device, or JavaScript web app using Ajax) making requests to a service over HTTP. These requests typically go over the public internet.
+
+2. One service making requests to another service owned by the same organization, often located within the same datacenter, as part of a service-oriented/microservices architecture. (Software that supports this kind of use case is sometimes called **middleware**.)
+
+3. One service making requests to a service owned by a different organization, usually via the internet. This is used for data exchange between different organizations’ backend systems. This category includes public APIs provided by online services, such as credit card processing systems, or OAuth for shared access to user data.
+
+> REST and SOAP
+
+`REST` is not a protocol, but rather a design philosophy that builds upon the principles of HTTP It emphasizes simple data formats, using URLs for identifying resources and using HTTP features for **cache control, authentication, and content type negotiation**. REST has been gaining popularity compared to SOAP, **at least in the context of cross-organizational service integration**, and is often associated with microservices.An API designed according to the principles of REST is called **RESTful**.
+
+`SOAP` is an XML-based protocol for making network API requests.The API of a SOAP web service is described using an XML-based language called the **Web Services Description Language(WSDL)**. WSDL enables code generation so that a client can access a remote service using local classes and method calls (which are encoded to XML messages and decoded again by the framework). **This is useful in statically typed programming languages, but less so in dynamically typed ones.**
+
+> Problem of SOAP
+
+- As WSDL is not designed to be human-readable, and as SOAP messages are often too complex to construct manually, users of SOAP rely heavily on tool support, code generation, and IDEs.For users of programming languages that are not supported by SOAP vendors, integration with SOAP services is difficult.
+- Even though SOAP and its various extensions are ostensibly standardized, interoperability between different vendors’ implementations often causes problems
+
+#### THE PROBLEMS WITH REMOTE PROCEDURE CALLS (RPCS)
