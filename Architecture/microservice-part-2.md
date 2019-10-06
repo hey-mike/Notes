@@ -267,3 +267,127 @@ When not to use:
 
 - Throttling shouldn't be used as a means to handle exceptions.
 - When faults are long-lasting. If this pattern is applied in that case, it will severely affect the performance and responsiveness of the application.
+
+#### Ambassador and sidecar pattern
+
+This pattern is used when we want to segregate common connectivity features such as monitoring, logging, routing, security, authentication, authorization, and more. It creates helper services that act as ambassadors and sidecars that do the objective of sending requests on behalf of a service. It is just another proxy that is located outside of the process. Specialized teams can work on it and let other people not worry about it so as to provide encapsulation and isolation. It also allows the application to be composed of multiple frameworks and technologies.
+
+Things to consider:
+
+- The ambassador can introduce some latency. Deep thought should be given on whether to use a proxy or expose common functionalities as the library.
+- Adding generalized functionalities in ambassador and sidecar is beneficial, but is it required for all scenarios? For example, consider the number of retries to a service, it might not be common for all use cases.
+- The language or framework in which ambassador and sidecar will be built, managed, and deployed strategy for it. The decision to create single or multiple instances of it based on need.
+- Flexibility to pass some parameters from service to ambassador and proxy and vice versa.
+- The deployment pattern: this is well suited when the ambassador and sidecar are deployed in containers.
+- The inter-micro service communication pattern should be such that it is framework agnostic or language agnostic. This would be beneficial in the long run.
+
+When to use:
+
+- When there are multiple frameworks and languages involved and you need a common set of general features such as client connectivity, logging, and so on throughout the application. An ambassador and sidecar can be consumed by any service across the application.
+- Services are owned by different teams or different organizations.
+- You need independent services for handling this cross-cutting functionality and they can be maintained independently.
+- When your team is huge and you want specialized teams to handle, manage, and maintain core cross-cutting functionalities.
+- You need to support the latest connectivity options in a legacy application or an application that is difficult to change.
+- You want to monitor resource consumption across the application and cut off a microservice if its resource consumption is huge.-
+
+When not to use
+
+- When network latency is utmost. Introducing a proxy layer would introduce some overhead that will create a slight delay, which may not be good for real-time scenarios.
+- When connectivity features cannot be generalized and require another level of integration and dependency with another service.
+- When creating a client library and distributing it to the microservices development team as a package.
+- For small applications where introducing an extra layer is actually an overhead.
+- When some services need to scale independently; if so, then the better alternative would be to deploy it separately and independently.
+
+#### Anti-corruption microservice design pattern
+
+This design provides an easy solution for this by introducing a facade between modern and legacy applications. This design pattern ensures that the design of an application is not hampered or blocked by legacy system dependencies:
+
+Things to consider:
+
+- The ACL should be properly scaled and given a better resources pool, as it will add latency to calls made between two systems.
+- Make sure that the corruption layer you introduce is actually an improvement and you don't introduce yet another layer of corruption.
+- The ACL adds an extra service; hence it must be effectively managed and maintained and scaled.
+- Effectively decide the number of ACLs. There can be many reasons to introduce an ACL—a means to translate undesirable formats of the object in required formats means to communicate between different languages, and so on.
+- Effective measures to make sure that transactions and data consistency are maintained between both systems and can be monitored.
+- The duration of the ACL, will it be permanent, how will the communication be handled.
+- While an ACL should successfully handle exceptions from the corruption layer, it should not completely, otherwise it would be very difficult to preserve any information about the original error.
+
+When to use:
+
+- There is a huge system up for refactoring from monolithic to microservices and there is a phase-by-phase migration planned instead of the big bang migration wherein the legacy system and new system need to coexist and communicate with each other.
+- If the system that you are undertaking is dealing with any data source whose model is undesirable or not in sync with the needed model, this pattern can be introduced and it will do the task of translating from undesirable formats to needed formats.
+- Whenever there is a need to link two bounded contexts, that is, a system is developed by someone else entirely and there is very little understanding of it, this pattern can be introduced as a link between systems.
+
+When not to use:
+
+- There are no major differences between new and legacy systems. The new system can coexist without the legacy system.
+- You have lots of transactional operations and maintaining data consistency between the ACL and the corrupt layer adds too much latency. In such case, this pattern can be merged with other patterns.
+- Your organization doesn't have extra teams to maintain and scale the ACL as and when needed.
+
+#### Bulkhead design pattern
+
+Separate out different services in the microservices application into various pools such that if one of the services fails, the others will continue to function irrespective of failure.
+
+Things to consider:
+
+- Define proper independent partitions in the application based on business and technical requirements.
+- Bulkheads can be introduced in forms of thread pools and processes. Decide which one is suitable for your application.
+- Isolation in the deployment of your microservices.
+
+When to use:
+
+- The application is huge and you want to protect it from cascading or spreading failures
+- You can isolate critical services from standard services and you can allocate separate pools for them
+
+When not to use:
+
+- When you don't have that much budget for maintaining separate overheads in terms of cost and management
+- The added level of complexity of maintaining separate pools is not necessary
+- Your resources usage is unexpected and you can't isolate your tenants and keep a limit on it as it is not acceptable when you would place several tenants in one partition
+
+#### Circuit breaker
+
+Services sometimes need to collaborate with each other when they need to handle requests. In such cases, there is a very high scenario that the other service is not available, is showing high latency, or is unusable. This pattern essentially solves this issue by introducing a breakage in the circuit that stops propagation in the whole architecture:
+
+Things to consider:
+
+1. Since you are invoking a remote call, and there may be many remote call invocation asynchronous and reactive principles for using future, promises, async, and await is must.
+2. Maintain a queue of requests; when your queue is overcrowded, you can easily trip the circuit. Always monitor the circuit, as you will often need to activate it again for an efficient system. So, have a mechanism ready for reset and failure handlers.
+3. You have a persistent storage and network cache such as **Memcache** or **Redis** to record availability.
+4. Logging, exception handling, and relaying failed requests.
+
+When to use:
+
+- When you don't want your resources to be depleted, that is, an action that is doomed to fail shouldn't be tried until it is fixed. You can use it to check the availability of external services.
+- When you can compromise a bit on performance, but want to gain high availability of the system and not deplete resources.
+
+When not to use:
+
+- You don't have an efficient cache layer that monitors and maintains states of services for a given time for requests across the clustered nodes.
+- For handling in-memory structures or as the substitute for handling exceptions in business logic. This would add overhead to performance.
+
+#### Strangler pattern
+
+This pattern is about eventually migrating a legacy system by incrementally replacing particular parts of functionality with new microservices application and services. It eventually introduces a proxy that redirects either to the legacy or the new microservices, until the migration is complete and at the end, you can shut off the strangler or the proxy:
+
+- **Reconstruct**: Construct a new application or site (in serverless or AWS cloud-based on modern principles). Incrementally reconstruct the functionalities in an agile manner.
+- **Coexist**: Leave the legacy application as it is. Introduce a facade that eventually acts as a proxy and decides where to route the request based on the current migration status. This facade can be introduced at web server level or programming level based on various parameters such as IP address, user agent, or cookies.
+- **Terminate**: Redirect everything to the modern migrated application and loosen off all the ties with the legacy application.
+
+Things to consider:
+
+- The facade or the proxy needs to be updated with the migration.
+- The facade or the proxy shouldn't be a single point of failure or bottleneck.
+- When the migration is complete, facade will evolve as the adapter for legacy applications.
+- The new code written should be such that it can easily be intercepted, so in future, we can replace it in future migrations.
+
+When to use:
+
+- When you want to follow the test-driven on behavior-driven development, and run fast and comprehensive tests with the accessibility of code coverages and adapt CI/CD.
+- Your application can be contained bounded contexts within which a model applies in the region. As an example, in a shopping cart application, the product module would be one context.
+
+When not to use:
+
+- When you are not able to intercept the user agent request, or you are not able to introduce a facade in your architecture.
+- When you think of doing a page by page migration at a time or you are thinking of doing it all at once.
+- When your application is more frontend-driven; that's where you have to entirely change and rework the interacting framework based on the way the frontend is interacting with services, as you don't want to expose the various ways the user agent is interacting with services.
