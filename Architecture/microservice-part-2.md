@@ -149,3 +149,121 @@ To overcome the drawbacks, the following patterns are used while maintaining a d
 - **Sagas**: A saga is defined as a batch sequence of local transactions. Each entry in the batch updates the specified database and moves on by publishing a message or triggering an event for the next entry in the batch to happen. If any entry in the batch fails locally or any business rule is violated, then the saga executes a series of compensating transactions that compensate or undo the changes that were made by the saga batch updates.
 - **API Composition:** This pattern insists that the application should perform the join rather than the database. As an example, a service is dedicated to query composition. So, if we want to fetch monthly product distributions, then we first retrieve the products from the product service and then query the distribution service to return the distribution information of the retrieved products.
 - **Command Query Responsibility Segregation (CQRS)**: The principle of this pattern is to have one or more evolving views, which usually have data coming from various services. Fundamentally, it splits the application into two parts—the command or the operating side and the query or the executor side. It is more of a publisher-subscriber pattern where the command side operates create/update/delete requests and emits events whenever the data changes. The executor side listens for those events and handles those queries by maintaining views that are kept up to date, based on the subscription of events that are emitted by the command or operating side.
+
+### Sharing concerns
+
+- Externalized configuration
+- Observability
+  - Log aggregation
+  - Distributed tracing
+
+### Design patterns
+
+#### Asynchronous messaging microservice design patterns
+
+To successfully implement this design, the following aspects should be considered:
+
+- When you need high scalability, or your current domain is already a message-based domain, then preference should be given to message-based commands over HTTP.
+- Publishing events across microservices, as well as changing the state in the original microservices.
+- Make sure that events are communicated across; mimicking the event would be a very bad design pattern.
+- Maintain the position of the subscriber's consumer to scale up performance.
+  When to make a rest call and when to use a messaging call. As HTTP is a synchronous call, it should be used only when needed.
+
+When to use:
+
+- When you want to use real-time streaming, use the Event Firehouse pattern, which has KAFKA as one of its key components.
+- When your complex system is orchestrated in various services, one of the variants of this system, RabbitMQ, is extremely helpful.
+- Often, instead of subscribing to services, directly subscribing to the datastore is advantageous. In such a case use, GemFire or Apache GeoCode following this pattern is helpful
+
+When not to use:
+
+- When you have heavy database operations during event transmission, as database calls are synchronous
+- When your services are coupled
+- When you don't have standard ways defined to handle data conflict situations
+
+#### backend for frontends
+
+Thins to consider:
+
+- A fair consideration of the amount of BFFs to be maintained. A new BFF should only be created when concerns across a generally available service can be separated out for a specific interface.
+- A BFF should only contain client/interface-specific code to avoid code duplication.
+- Divide responsibilities across teams for maintaining BFFs.
+- This should not be confused with a **Shim**, a converter to the convert to interface-specific format required for that type of interface.
+
+When to use:
+
+- There are varying differences in a general-purpose backend service across multiple interfaces and there are multiple updates at any point in time in a single interface.
+- You want to optimize a single interface and not disturb the utility across other interfaces.
+- There are various teams, and implement an alternative language for a specific interface and you want to maintain it separately.
+
+When not to use:
+
+- Do not use this pattern to handle generic parameter concerns such as authentication, security, or authorization. This would just increase latency.
+- If the cost of deploying an extra service is too high.
+- When interfaces make the same requests and there is not much difference between them.
+- When there is only one interface and support for multiple interfaces is not there, a BFF won't make much sense.
+
+#### Gateway aggregation and offloading
+
+**Gateway aggregator**: It receives the client request, then it decides to which different systems it has to dispatch the client request, gets the results, and then aggregates and sends them back to the client. For the client, it is just one request. Overall round trips between client and server are reduced.
+
+Things to consider:
+
+- Do not introduce service coupling, that is, the gateway can exist independently, without other service consumers or service implementers.
+- Here, every microservice will be dependent on the gateway. Hence, the network latency should be as low as possible.
+- Make sure to have multiple instances of the gateway, as only a single instance of the gateway may introduce it as a single point of failure.
+- Each of the requests goes through the gateway. Hence, it should be ensured that gateway has efficient memory and adequate performance, and can be easily scaled to handle the load. Have one round of load testing to make sure that it is able to handle bulk load.
+- Introduce other design patterns such as bulkheads, retry, throttle, and timeout for efficient design.
+- The gateway should handle logic such as the number of retries, waiting for service until.
+- The cache layer should be handled, which can improve performance.
+- The gateway aggregator should be behind the gateway, as the request aggregator will have another. Combining them in a gateway will likely impact the gateway and its functionalities.
+- While using the asynchronous approach, you will find yourself smacked by too many promises of callback hell. Go with the reactive approach, a more declarative style. Reactive programming is prevalent from Java to Node.js to Android. You can check out this link for reactive extensions across different links: https://github.com/reactivex.
+- Business logic should not be there in the gateway.
+
+When to use:
+
+- There are multiple microservices across and a client needs to communicate with multiple microservices.
+- Want to reduce the frequent network calls when the client is in lesser range network or cellular network. Breaking it in one request is efficient as then the frontend or the gateway will only have to cache one request.
+- When you want to encapsulate the internal structure or introduce an abstract layer to a large team present in your organization.
+
+When not to use:
+
+- When you just want to reduce the network calls. You cannot introduce a whole level of complexity for just that need.
+- The latency by the gateway is too much.
+- You don't have asynchronous options in the gateway. Your system makes too many synchronous calls for operations in the gateway. That would result in a blocking system.
+- Your application can't get rid of coupled services.
+
+#### Proxy routing and throttling
+
+When you have multiple microservices that you want to expose across a single endpoint and that single endpoint routes to service as per need. This application is helpful when you need to handle imminent transient failures and have a retry loop on a failed operation, thus improve the stability of the application. This pattern is also helpful when you want to handle the consumption of resources used by a microservice.
+
+This pattern is used to meet the agreed SLAs and handle loads on resources and resource allocation consumption even when an increase in demand places loads on resources:
+
+Things to consider:
+
+- The gateway can be a single point of failure. Proper steps have to be taken to ensure that it has fault tolerant capabilities during development. Also, it should be run in multiple instances.
+- Gateway should have proper memory and resource allocation otherwise it will introduce a bottleneck. Proper load testing should be done to ensure that failures are not cascaded.
+- Routing can be done based on IP, header, port, URL, request parameter, and so on.
+- The retry policy should be crafted very carefully based on the business requirements. It's okay in some places to have a please try again rather than having waiting periods and retrials. The retry policy may also affect the responsiveness of the application.
+- For effective application, this pattern should be combined with **Circuit Breaker Application**.
+- If service is idempotent, then and only then should it be retried. Trying retrial on other services may have unhealthy consequences. For example, if there is a payment service that waits for responses from other payment gateways, the retry component may think it fails and may send another request and the customer gets charged twice.
+- Different exceptions should handle the retry logic accordingly, based on the exceptions.
+- Retry logic should not disturb transaction management. The retry policy should be used accordingly.
+- All failures that trigger a retry should be logged and handled properly for future scenarios.
+- An important point to be considered is this is no replacement for exception handling. The first priority should be given to exceptions always, as they would not introduce an extra layer and add latency.
+- Throttling should be added early in the system as it's difficult to add once the system is implemented; it should be carefully designed.
+- Throttling should be performed quickly. It should be smart enough to detect an increase in activity and react accordingly by taking appropriate measures.
+- Consideration between throttling and auto-scaling should be decided based on business requirements.
+  The requests that are throttled should be effectively placed in a queue based on priority.
+
+When to use:
+
+- To ensure that agreed LSAs are maintained.
+- To avoid a single microservice consuming the majority of the pool of resources and avoid resource depletion by a single microservice.
+- To handle sudden bursts in consumption of microservices.
+- To handle transient and short-lived faults.
+
+When not to use:
+
+- Throttling shouldn't be used as a means to handle exceptions.
+- When faults are long-lasting. If this pattern is applied in that case, it will severely affect the performance and responsiveness of the application.
