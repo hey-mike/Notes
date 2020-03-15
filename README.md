@@ -94,6 +94,14 @@ Multipart upload allows you to upload a single object as a set of parts. Each pa
 - Working with Maps and Locations in iOS Apps
 - Kubernetes for developer
 - AWS Certified Solutions Architect - Associate (SAA-C01) Cert Guide, First Edition
+- Enterprise API management
+
+## Reading list (2020)
+
+- Full Stack Serverless
+- Architecting for Scale, 2nd edition
+- API Traffic Management 101
+- TypeScript Quickly
 
 ## Reading queue
 
